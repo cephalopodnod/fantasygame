@@ -1,0 +1,37 @@
+class Item:
+      
+    def __init__(self,name,use,consumable,statsEffected={},cost=0):
+        self.name = name                    #str
+        self.use = use                      #str
+        self.consumable = consumable        #bool
+        self.statsEffected = statsEffected  #dict
+        self.cost = cost                    #int
+        
+    def setEffect(self,effect):
+        self.use = effect
+
+    def applyStatChange(self,stat,qty):
+        tempDict = {stat:qty}
+        self.statsEffected.update(tempDict)
+
+    def setCost(self,cost):
+        self.cost = cost
+
+class Equipment:
+    def __init__(self,name,equip_type):
+        self.name = name
+        self.type = equip_type
+        self.stats = {}
+        self.bonus_trait = {}
+    
+    def setArmorStats(self,armor=0,mr=0,dodge=0,bonus={}):
+        self.stats = {"armor":armor,"magic_resist":mr,"dodge_chance":dodge}
+        self.bonus_trait = bonus
+
+    def setWeaponStats(self,atk=0,crit=0,bonus={}):
+        self.stats = {'atk':atk,'crit_chance':crit}
+        self.bonus_trait = bonus
+
+    def setOffHandStats(self,stats={},bonus={}):
+        self.stats = stats
+        self.bonus_trait = bonus
