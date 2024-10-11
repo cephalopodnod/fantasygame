@@ -1,38 +1,22 @@
-class Character:
-    def __init__(self):
-        pass     
-
-    # item related code
-    def useItem(self,item,target):
-        pass
-        
-
-    def addItem(self,item,amount=1):
-        pass
-
-    def removeItem(self,item,amount=1):
-        pass
-
-    def shopItem(self,item,cost,quantitity,buy):
-        pass
-
-    def makeKeyItem(self,item):
-        pass
+class Character():
+    def __init__(self,name):
+        self.name = name
+        self.hp = 25   
 
     # ability/skills related code
-    def gainAbility(self,ability):
+    def gainAbility(self):
         pass
 
     def move(self):
         pass
 
-    def interact(self,target):
+    def interact(self):
         pass
 
-    def updateHealth(self,amount):
-        pass
+    def updateHealth(self,amount:int):
+        self.hp += amount
 
-    def updateMana(self,amount):
+    def updateMana(self):
         pass
 
     def levelUp(self):
@@ -41,5 +25,9 @@ class Character:
     def death(self):
         pass
 
-    def revive(self,toHealth):
-        pass
+    def revive(self):
+        
+
+
+jon = Character('Jon')
+print(jon.hp)

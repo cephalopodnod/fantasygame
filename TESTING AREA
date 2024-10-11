@@ -15,3 +15,10 @@
     # ELEMENTAL_SUB_TYPES = ["floating","crawling","ethereal","giant","animal"]
     # ROBOT_SUB_TYPE = ["human","animal","mythical"]
     # MYTHICAL_SUB_TYPE = ["dragon","kirin","phoenix","centaur","unicorn","pegasus","angel","leviathin","demon","god"]
+
+import Character
+
+# jon = Character
+# print(jon.hp)
+# # jon.updateHealth(10)
+# # print(jon.hp)
