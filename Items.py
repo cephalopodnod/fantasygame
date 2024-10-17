@@ -1,5 +1,4 @@
 class Item:
-      
     def __init__(self,name,use,consumable,statsEffected={},cost=0):
         self.name = name                    #str
         self.use = use                      #str
@@ -34,19 +33,17 @@ class Equipment:
 
     def setOffHandStats(self,stats={},bonus={}):
         self.stats = stats
-        self.bonus_trait = bonusclass Consumable:
+        self.bonus_trait = bonus
+    
+class Consumable:
     def __int__(self,name,stat='',increase=0):
         self.name = name
         self.stat = stat
         self.increase = increase
 
-class Equipment:
-    def __init__(self):
-        self.stats = {}
-              
-
 class Armor:
-    def __init__(self,position,type,armor=0,mr=0,bonus={}):
+    def __init__(self,name,position,type,armor=0,mr=0,bonus={}):
+        self.name = name
         self.slot = position
         self.type = type
         self.stats = {'Armor':armor,'Magic Resist':mr}

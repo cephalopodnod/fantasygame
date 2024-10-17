@@ -16,9 +16,16 @@
     # ROBOT_SUB_TYPE = ["human","animal","mythical"]
     # MYTHICAL_SUB_TYPE = ["dragon","kirin","phoenix","centaur","unicorn","pegasus","angel","leviathin","demon","god"]
 
-import Character
+import Characters
+import Items
 
-# jon = Character
-# print(jon.hp)
-# # jon.updateHealth(10)
-# # print(jon.hp)
+chestplate = Items.Armor('Rons Chestplate','chest','heavy',armor=15,mr=0)
+jon = Characters.Character('Jon',Characters.Warrior())
+jon.add_item(1,chestplate)
+jon.equip_item('Chest',chestplate)
+print(jon.equipment)
+jon.armor_check()
+print(jon.armor)
+chest2 = Items.Armor('Bra','chest','clothing',armor=0,mr=0)
+jon.add_item(1,chest2)
+jon.equip_item('Chest',chest2)
