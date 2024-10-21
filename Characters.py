@@ -66,7 +66,7 @@ class Character:
 
     def update_qty_item(self,amount=1,item={}):
         if item in self.inventory:
-            self.inventory[item]['Quantity'] -= 1
+            self.inventory[item]['Quantity'] -= amount
         else:
             pass
 
@@ -75,9 +75,7 @@ class Character:
             self.equipment[position] = item
         else:
             print('There is an item here')
-            
-
-         
+               
     def attack(self,target):
         attack = self.atk - target.defense
         crit_multiplier = 0.10 * (self.LCK * 0.04)
@@ -94,7 +92,6 @@ class Character:
 
     def updateMana(self):
         pass
-
 
     def death(self):
         pass
