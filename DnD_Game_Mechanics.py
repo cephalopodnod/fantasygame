@@ -1,6 +1,6 @@
 class Dice:
     import random
-    def __init__(self,qty,size=4):
+    def __init__(self,qty,size=4) -> None:
         self.qty = qty
         self.size = size
 
@@ -14,8 +14,11 @@ class Dice:
 class Character:
     INITIAL_STAT_POINTS = 27
 
-    def __init__(self):
+    def __init__(self,race,spec) -> None:
+        self.race = race
+        self.spec = spec
         self.hp = 0
+        self.ac = 10
         self.spellslots = {"0":0,
                            "1":0,
                            "2":0,
@@ -27,8 +30,8 @@ class Character:
                            "8":0,
                            "9":0}
         self.spells = []
-        self.actions = []
-        self.abilities = []
+        self.actions = ['Attack','Move','Sprint','Jump','Shove','Disengage']
+        self.weaponskills = []
         self.stats = {"STR":8,
                       "DEX":8,
                       "CON":8,
@@ -93,6 +96,12 @@ class Character:
                           "Languages (Celestial)": 0,
                           "Languages (Sylvan)": 0,
                           "Languages (Primordial)": 0}
+        self.maxcarryweight = self.stats['STR'] * 15
+        self.carryweight = 0
+        if self.race == 'Halflings' or self.race == 'Dwarves' or self.race == 'Gnomes':
+            self.movedistance = 25
+        else:
+            self.movedistance = 30
 
     def buy_stat(self,stat):
         points = Character.INITIAL_STAT_POINTS
@@ -117,7 +126,43 @@ class Character:
         elif self.stats[stat] == 8 and points > 1:
             points = points - 1
             self.stats[stat] = self.stats[stat] + 1
-        print(f"Your remaining points: {points}")
+
+    def check_weight(self):
+        if self.carryweight >= self.stats['STR'] * 10:
+            self.movedistance = self.movedistance - 20
+        elif self.carryweight >= self.stats['STR'] * 5:
+            self.movedistance = self.movedistance - 10
+        else:
+            pass
+
+class Weapon:
+    #DMGTYPES = ['Bludgeoning','Slashing','Piercing']
+    def __init__(self,name,dmgtype,bonus=None,qty=1,size=4) -> None:
+        self.name = name
+        self.dmgtype = dmgtype
+        self.bonus = bonus
+        self.damage = {'Quantity':qty,'Size':size}     
+
+class Armor:
+    #ARMORTYPES = ['Clothing','Light','Medium','Heavy']
+    def __init__(self,armortype,position,ac=10,bonus=None) -> None:
+        self.ac = ac
+        self.armortype = armortype
+        self.position = position
+        self.bonus = bonus
+
+    def equip(self,character):
+        character.ac = character.ac + self.ac
+        character.equipment[self.position] = self
+
+class Consumable:
+    def __init__(self) -> None:
+        pass
+
+class OffHand:
+    def __init__(self) -> None:
+        pass
+
 
 jon = Character()
 print(jon.stats)
