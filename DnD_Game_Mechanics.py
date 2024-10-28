@@ -14,11 +14,13 @@ class Dice:
 class Character:
     INITIAL_STAT_POINTS = 27
 
-    def __init__(self,race,spec) -> None:
-        self.race = race
-        self.spec = spec
+    def __init__(self) -> None:
+        self.race = ''
+        self.subrace = ''
+        self.spec = ''
         self.hp = 0
         self.ac = 10
+        self.darkvision = 30
         self.spellslots = {"0":0,
                            "1":0,
                            "2":0,
@@ -32,6 +34,7 @@ class Character:
         self.spells = []
         self.actions = ['Attack','Move','Sprint','Jump','Shove','Disengage']
         self.weaponskills = []
+        self.traits = []
         self.stats = {"STR":8,
                       "DEX":8,
                       "CON":8,
@@ -66,12 +69,50 @@ class Character:
                               "Sleight of Hand": 0,
                               "Stealth": 0,
                               "Survival": 0,
-                              "Light Armor": 0,
-                              "Medium Armor": 0,
-                              "Heavy Armor": 0,
                               "Shields": 0,
                               "Simple Weapons": 0,
                               "Martial Weapons": 0}
+        self.armorproficiency = {'Clothing':True,
+                                'Light Armor':False,
+                                'Medium Armor':False,
+                                'Heavy Armor':False}
+        self.commonweaponproficiency = {"Club": False,
+                                "Dagger": False,    
+                                "Greatclub": False,    
+                                "Handaxe": False,    
+                                "Javelin": False,    
+                                "Light Hammer": False,    
+                                "Mace": False,    
+                                "Quarterstaff": False,    
+                                "Sickle": False,
+                                "Spear": False,    
+                                "Light Crossbow": False,    
+                                "Dart": False,    
+                                "Shortbow": False,    
+                                "Sling": False}
+        self.martialweaponproficiency = {"Battleaxe": False,
+                                "Flail": False,
+                                "Glaive": False,
+                                "Greataxe": False,
+                                "Greatsword": False,    
+                                "Halberd": False,    
+                                "Lance": False,    
+                                "Longsword": False,    
+                                "Maul": False,    
+                                "Morningstar": False,    
+                                "Pike": False,
+                                "Rapier": False,    
+                                "Scimitar": False,    
+                                "Shortsword": False,    
+                                "Trident": False,    
+                                "War Pick": False,    
+                                "Warhammer": False,    
+                                "Whip": False,    
+                                "Blowgun": False,
+                                "Hand Crossbow": False,    
+                                "Heavy Crossbow": False,    
+                                "Longbow": False,    
+                                "Net": False}                            
         self.tools = {"Tools (Artisan’s tools)": 0,
                       "Tools (Disguise Kit)": 0,
                       "Tools (Forgery Kit)": 0,
@@ -102,7 +143,44 @@ class Character:
             self.movedistance = 25
         else:
             self.movedistance = 30
+        self.age = 0
+        self.alignment = ''
 
+    def set_age(self,age=0):
+        self.age = age
+
+    def set_race(self):
+        race = input('Select your race: Dragonborn, Dwarf, Elf, Gnome, Half-Elf, Halfling, Half-Orc, Human, Tiefling. ').lower()
+        if race == 'dragonborn' or race == 'half-elf' or race == 'half-orc' or race == 'human' or race == 'tiefling':
+            self.race = race
+        elif race == 'dwarf':
+            subrace = input('Are you Hill or Mountain Dwarf? ').lower()
+            self.race = race
+            self.subrace = subrace
+        elif race == 'elf':
+            subrace = input('Are you High, Wood, or a Dark Elf (Drow)? ').lower()
+            self.race = race
+            self.subrace = subrace
+        elif race == 'gnome':
+            subrace = input('Are you a Forest or Rock Gnome? ').lower()
+            self.race = race
+            self.subrace = subrace
+        elif race == 'halfling':
+            subrace = input('Are you a Lightfoot or Stout Halfling)? ').lower()
+            self.race = race
+            self.subrace = subrace    
+        else:
+            print('Please try again!')
+            self.set_race()
+
+    def set_alignment(self):
+        alignments = ['Lawful Good','Neutral Good','Chaotic Good','Lawful Neutral','Neutral','Chaotic Neutral','Lawful Evil','Neutral Evil','Chaotic Evil']
+        print('Please select your alignment:')
+        for each in alignments:
+            print(each)
+        pick = input('Which alignment do you choose? ').lower()
+        self.alignment = pick
+    
     def buy_stat(self,stat):
         points = Character.INITIAL_STAT_POINTS
         if self.stats[stat] == 14 and points < 9:
@@ -165,6 +243,5 @@ class OffHand:
 
 
 jon = Character()
-print(jon.stats)
-jon.buy_stat('STR')
-print(jon.stats)
+jon.set_alignment()
+print(jon.alignment)
