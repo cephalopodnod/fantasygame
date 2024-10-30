@@ -14,7 +14,7 @@ class Dice:
 class Character:
     INITIAL_STAT_POINTS = 27
 
-    def __init__(self) -> None:
+    def __init__(self,position) -> None:
         self.race = ''
         self.subrace = ''
         self.spec = ''
@@ -145,7 +145,6 @@ class Character:
             self.movedistance = 30
         self.age = 0
         self.alignment = ''
-        self.inventory = []
 
     def set_age(self,age=0):
         self.age = age
@@ -214,20 +213,6 @@ class Character:
         else:
             pass
 
-    def use_item(self,item):
-        self.inventory[item] = self.inventory[item] - 1
-
-    def add_item(self,item,qty=1):
-        self.inventory[item] = qty
-
-    def equip_weapon(self,weapon):
-        self.equipment['Main Hand'] = weapon
-        self.inventory[weapon] = self.inventory[weapon] - 1
-
-    def equip_armor(self,armor,location):
-        self.equipment[location] = armor
-        self.inventory[armor] = self.inventory[armor] - 1
-
 class Weapon:
     #DMGTYPES = ['Bludgeoning','Slashing','Piercing']
     def __init__(self,name,dmgtype,bonus=None,qty=1,size=4) -> None:
@@ -256,21 +241,8 @@ class Consumable:
         self.status = status
 
 class OffHand:
-    def __init__(self,ac=0,bonus='',stat='',amount=0) -> None:
-        self.ac = ac
-        self.bonus = bonus
-        self.effect = {'Stat':stat,'Increase':amount}
-
-class Event:
-    def __init__(self,reward=[]):
-        self.state = True
-        self.reward = []
-        
-    def complete(self,character):
-        self.state = False
-        for item in self.reward:
-            character.inventory.appened(item)
-
+    def __init__(self) -> None:
+        pass
 
 
 jon = Character()
