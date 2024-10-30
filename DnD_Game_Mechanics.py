@@ -14,7 +14,7 @@ class Dice:
 class Character:
     INITIAL_STAT_POINTS = 27
 
-    def __init__(self) -> None:
+    def __init__(self,position) -> None:
         self.race = ''
         self.subrace = ''
         self.spec = ''
@@ -145,7 +145,26 @@ class Character:
             self.movedistance = 30
         self.age = 0
         self.alignment = ''
+        self.currentposition = position
 
+    def attack(self,target):
+        pass
+    
+    def move(self,newposition):
+        pass
+
+    def sprint(self,newposition):
+        pass
+
+    def jump(self,newposition):
+        pass
+
+    def shove(self,target):
+        pass
+
+    def disengage(self,newposition):
+        pass
+    
     def set_age(self,age=0):
         self.age = age
 
@@ -213,6 +232,8 @@ class Character:
         else:
             pass
 
+
+
 class Weapon:
     #DMGTYPES = ['Bludgeoning','Slashing','Piercing']
     def __init__(self,name,dmgtype,bonus=None,qty=1,size=4) -> None:
@@ -240,8 +261,3 @@ class Consumable:
 class OffHand:
     def __init__(self) -> None:
         pass
-
-
-jon = Character()
-jon.set_alignment()
-print(jon.alignment)
