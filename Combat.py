@@ -9,6 +9,7 @@ class Combat:
         self.currentturn = 1
 
     def roll_initiative(self):
+        from DnD_Game_Mechanics import Dice
         dice = Dice()
         dicerolls = {}
         for each in self.goodguys:

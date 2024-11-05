@@ -56,6 +56,7 @@ class Character:
     "Tough": "Your maximum HP increases by +2 per level.",
     "War Caster": "Advantage on Constitution saves to maintain concentration, can cast spells instead of making opportunity attacks, and can perform somatic components with weapons or shields.",
     "Weapon Master": "Gain proficiency with four weapons of your choice and +1 to Strength or Dexterity."}
+    POSSIBLE_CLASSES = classes = ["Barbarian","Bard","Cleric","Druid","Fighter","Monk","Paladin","Ranger","Rogue","Sorcerer","Warlock","Wizard"]
 
     def __init__(self,position) -> None:
         self.race = ''
@@ -240,8 +241,45 @@ class Character:
                                'WIS': False, 
                                'INT': False, 
                                'CHR': False}
-        self.athlete = ''
+        self.featchoices = {'Athlete':'',
+                            'Elemental Adept':'',
+                            'Lightly Armored':'',
+                            'Magic Initiate':'',
+                            'Moderately Armored':'',
+                            'Observant':'',
+                            'Resilient':'',
+                            'Skilled: Choice 1':'',
+                            'Skilled: Choice 2':'',
+                            'Skilled: Choice 3':'',
+                            'Tavern Brawler':'',
+                            'Weapon Master':'',
+                            'Weapon Master: Choice 1':'',
+                            'Weapon Master: Choice 2':'',
+                            'Weapon Master: Choice 3':'',
+                            'Weapon Master: Choice 4':''}
+        self.position = position
 
+    def attack(self,enemy):
+        pass
+
+    def move(self,position):
+        if position <= self.position and position >= -self.position:
+            self.position = position
+        else:
+            pass
+
+    def sprint(self):
+        self.movedistance = self.movedistance * 1.5
+
+    def jump(self):
+        pass
+
+    def shove(self,enemy):
+        pass
+
+    def disengage(self):
+        pass
+    
     def str_saving_throw(self):
         pass
 
@@ -266,16 +304,182 @@ class Character:
     def gainfeat_athlete(self,choice):
         self.feat['Athlete'] = True
         if choice.upper() == 'DEX':
-
+            self.stats['DEX'] = self.stats['DEX'] + 1
+            self.featchoices['Athlete'] = 'DEX'
         elif choice.upper() == 'STR':
             self.stats['STR'] = self.stats['STR'] + 1
-
+            self.featchoices['Athlete'] = 'STR'
 
     def gainfeat_alert(self):
         self.feat['Alert'] = True
 
     def gainfeat_charger(self):
-        pass
+        self.feat['Charger'] = True
+
+    def gainfeat_crossbowexpert(self):
+        self.feat["Crossbow Expert"] = True
+
+    def gainfeat_defensiveduelist(self):
+        self.feat['Defensive Duelist'] = True
+
+    def gainfeat_dualwielder(self):
+        self.feat['Dual Wielder'] = True
+
+    def gainfeat_dungeondelver(self):
+        self.feat['Dungeon Delver'] = True
+
+    def gainfeat_durable(self):
+        self.feat['Durable'] = True
+
+    def gainfeat_elementaladept(self,choice):
+        self.feat['Elemental Adept'] = True
+        self.featchoices['Elemental Adept'] = choice.lower()
+
+    def gainfeat_grappler(self):
+        self.feat['Grappler'] = True
+
+    def gainfeat_greatweaponmaster(self):
+        self.feat['Great Weapon Master'] = True
+
+    def gainfeat_healer(self):
+        self.feat['Healer'] = True
+
+    def gainfeat_heavilyarmored(self):
+        self.feat['Heavily Armored'] = True
+
+    def gainfeat_heavyarmormaster(self):
+        self.feat['Heavy Armor Master'] = True
+
+    def gainfeat_inspiringleader(self):
+        self.feat['Inspiring Leader'] = True
+
+    def gainfeat_keenmind(self):
+        self.feat['Keen Mind'] = True
+
+    def gainfeat_lightlyarmored(self,choice):
+        self.feat['Lightly Armored'] = True
+        if choice.upper() == 'DEX':
+            self.stats['DEX'] = self.stats['DEX'] + 1
+            self.featchoices['Lightly Armored'] = 'DEX'
+        elif choice.upper() == 'STR':
+            self.stats['STR'] = self.stats['STR'] + 1
+            self.featchoices['Lightly Armored'] = 'STR'
+
+    def gainfeat_linguist(self):
+        self.feat['Linguist'] = True
+
+    def gainfeat_lucky(self):
+        self.feat['Lucky'] = True
+
+    def gainfeat_mageslayer(self):
+        self.feat['Mage Slayer'] = True
+
+    def gainfeat_magicinitiate(self,choice):
+        self.feat['Magic Initiate'] = True
+        if choice.lower() == 'cleric':
+            self.featchoices['Magic Initiate'] = choice.lower()
+        elif choice.lower() == 'bard':
+            self.featchoices['Magic Initiate'] = choice.lower()
+        elif choice.lower() == 'wizard':
+            self.featchoices['Magic Initiate'] = choice.lower()
+        elif choice.lower() == 'sorcerer':
+            self.featchoices['Magic Initiate'] = choice.lower()
+        elif choice.lower() == 'warlock':
+            self.featchoices['Magic Initiate'] = choice.lower()
+        elif choice.lower() == 'druid':
+            self.featchoices['Magic Initiate'] = choice.lower()
+
+    def gainfeat_martialadept(self):
+        self.feat['Martial Adept'] = True
+
+    def gainfeat_mediumarmormaster(self):
+        self.feat['Medium Armor Master'] = True
+
+    def gainfeat_mobile(self):
+        self.feat['Mobile'] = True
+
+    def gainfeat_moderatelyarmored(self,choice):
+        self.feat['Moderately Armored'] = True
+        if choice.upper() == 'DEX':
+            self.stats['DEX'] = self.stats['DEX'] + 1
+            self.featchoices['Moderately Armored'] = 'DEX'
+        elif choice.upper() == 'STR':
+            self.stats['STR'] = self.stats['STR'] + 1
+            self.featchoices['Moderately Armored'] = 'STR'
+
+    def gainfeat_mountedcombatant(self):
+        self.feat['Mounted Combatant'] = True
+
+    def gainfeat_observant(self,choice):
+        self.feat['Observant'] = True
+        if choice.upper() == 'INT':
+            self.stats['INT'] = self.stats['INT'] + 1
+            self.featchoices['Observant'] = 'INT'
+        elif choice.upper() == 'WIS':
+            self.stats['WIS'] = self.stats['WIS'] + 1
+            self.featchoices['Observant'] = 'WIS'
+
+    def gainfeat_polearmmaster(self):
+        self.feat['Polearm Master'] = True
+
+    def gainfeat_resilient(self,choice):
+        self.feat['Resilient'] = True
+        self.featchoices['Resilient'] = choice.lower()
+
+    def gainfeat_ritualcaster(self):
+        self.feat['Ritual Caster'] = True
+
+    def gainfeat_savageattacker(self):
+        self.feat['Savage Attacker'] = True
+
+    def gainfeat_sentinel(self):
+        self.feat['Sentinel'] = True
+
+    def gainfeat_sharpshooter(self):
+        self.feat['Sharpshooter'] = True
+
+    def gainfeat_shieldmaster(self):
+        self.feat['Shield Master'] = True
+
+    def gainfeat_skilled(self,choice1,choice2,choice3):
+        self.feat['Skilled'] = True
+        self.featchoices['Skilled: Choice 1'] = choice1.lower()
+        self.featchoices['Skilled: Choice 2'] = choice2.lower()
+        self.featchoices['Skilled: Choice 3'] = choice3.lower()
+
+    def gainfeat_skulker(self):
+        self.feat['Skulker'] = True
+
+    def gainfeat_spellsniper(self):
+        self.feat['Spell Sniper'] = True
+    
+    def gainfeat_tavernbrawler(self,choice):
+        self.feat['Tavern Brawler'] = True
+        if choice.upper() == 'DEX':
+            self.stats['DEX'] = self.stats['DEX'] + 1
+            self.featchoices['Tavern Brawler'] = 'DEX'
+        elif choice.upper() == 'STR':
+            self.stats['STR'] = self.stats['STR'] + 1
+            self.featchoices['Tavern Brawler'] = 'STR'    
+
+    def gainfeat_tough(self):
+        self.feat['Tough'] = True
+
+    def gainfeat_warcaster(self):
+        self.feat['War Caster'] = True
+
+    def gainfeat_weaponmaster(self,choice,weapon1,weapon2,weapon3,weapon4):
+        self.feat['Weapon Master'] = True
+        if choice.upper() == 'DEX':
+            self.stats['DEX'] = self.stats['DEX'] + 1
+            self.featchoices['Weapon Master'] = 'DEX'
+        elif choice.upper() == 'STR':
+            self.stats['STR'] = self.stats['STR'] + 1
+            self.featchoices['Weapon Master'] = 'STR' 
+        self.featchoices['Weapon Master: Choice 1'] = weapon1.lower()
+        self.featchoices['Weapon Master: Choice 2'] = weapon2.lower()
+        self.featchoices['Weapon Master: Choice 3'] = weapon3.lower()
+        self.featchoices['Weapon Master: Choice 4'] = weapon4.lower()
 
     def set_age(self,age=0):
         self.age = age
@@ -357,72 +561,123 @@ class Character:
     def equip_armor(self,armor,location):
         self.equipment[location] = armor
         self.inventory[armor] = self.inventory[armor] - 1
-
-    def gain_feat(self,name,updates):
-        pass
-
-    def use_item(self,item):
-        self.inventory[item] = self.inventory[item] - 1
-
-    def add_item(self,item,qty=1):
-        self.inventory[item] = qty
-
-    def equip_weapon(self,weapon):
-        self.equipment['Main Hand'] = weapon
-        self.inventory[weapon] = self.inventory[weapon] - 1
-
-    def equip_armor(self,armor,location):
-        self.equipment[location] = armor
-        self.inventory[armor] = self.inventory[armor] - 1
-
-    def gain_feat(self,name,updates):
-        pass
-
-    def use_item(self,item):
-        self.inventory[item] = self.inventory[item] - 1
-
-    def add_item(self,item,qty=1):
-        self.inventory[item] = qty
-
-    def equip_weapon(self,weapon):
-        self.equipment['Main Hand'] = weapon
-        self.inventory[weapon] = self.inventory[weapon] - 1
-
-    def equip_armor(self,armor,location):
-        self.equipment[location] = armor
-        self.inventory[armor] = self.inventory[armor] - 1
         self.ac = armor.ac + self.ac
         self.equipment[self.location] = self
+
+class Barabarian:
+    def __init__(self):
+        self.skills = {1: {"Rage": "Enter a rage as a bonus action, gaining advantage on Strength checks and saving throws, bonus damage on melee weapon attacks, and resistance to bludgeoning, piercing, and slashing damage. Lasts for 1 minute or until you’re knocked unconscious or your turn ends without attacking or taking damage.",
+                                "Unarmored Defense": "When not wearing armor, your AC is 10 + Dexterity modifier + Constitution modifier."},
+                            2: {"Reckless Attack": "When you make your first attack on your turn, you can decide to attack recklessly, gaining advantage on melee weapon attack rolls using Strength for the turn. Attacks against you also gain advantage until your next turn.",
+                                "Danger Sense": "You have advantage on Dexterity saving throws against effects you can see, such as traps and spells, as long as you are not blinded, deafened, or incapacitated."},
+                            3: {"Primal Path": "Choose a Primal Path (Path of the Berserker or Path of the Totem Warrior), gaining features at 3rd, 6th, 10th, and 14th levels."},
+                            4: {"Ability Score Improvement": "Increase one ability score by 2, or two ability scores by 1 each. You cannot increase an ability score above 20."},
+                            5: {"Extra Attack": "You can attack twice, instead of once, whenever you take the Attack action on your turn.",
+                                "Fast Movement": "Your speed increases by 10 feet while you aren’t wearing heavy armor."},
+                            6: {"Path Feature": "Gain a feature from your Primal Path."},
+                            7: {"Feral Instinct": "You have advantage on initiative rolls. Additionally, if you are surprised at the beginning of combat and aren’t incapacitated, you can act normally on your first turn if you enter your rage before doing anything else on that turn."},
+                            8: {"Ability Score Improvement": "Increase one ability score by 2, or two ability scores by 1 each. You cannot increase an ability score above 20."},
+                            9: {"Brutal Critical": "You can roll one additional weapon damage die when determining the extra damage for a critical hit with a melee attack. This increases at higher levels."},
+                            10: {"Path Feature": "Gain a feature from your Primal Path."},
+                            11: {"Relentless Rage": "If you drop to 0 HP while raging and don’t die outright, make a DC 10 Constitution saving throw. If you succeed, you drop to 1 HP instead. Each time you use this feature, the DC increases by 5. It resets after a short or long rest."},
+                            12: {"Ability Score Improvement": "Increase one ability score by 2, or two ability scores by 1 each. You cannot increase an ability score above 20."},
+                            13: {"Brutal Critical (2 dice)": "You can roll two additional weapon damage dice when determining the extra damage for a critical hit with a melee attack."},
+                            14: {"Path Feature": "Gain a feature from your Primal Path."},
+                            15: {"Persistent Rage": "Your rage only ends early if you fall unconscious or choose to end it."},
+                            16: {"Ability Score Improvement": "Increase one ability score by 2, or two ability scores by 1 each. You cannot increase an ability score above 20."},
+                            17: {"Brutal Critical (3 dice)": "You can roll three additional weapon damage dice when determining the extra damage for a critical hit with a melee attack."},
+                            18: {"Indomitable Might": "If your total for a Strength check is less than your Strength score, you can use your Strength score in place of the total."},
+                            19: {"Ability Score Improvement": "Increase one ability score by 2, or two ability scores by 1 each. You cannot increase an ability score above 20."},
+                            20: {"Primal Champion": "Your Strength and Constitution scores increase by 4 (maximum of 24), and you gain an unlimited number of rages."}}
+        self.featlevels = [4,8,12,16,19]
+        self.proficiencies = ['Light Armor','Medium Armor','Shields','Simple Weapons','Martial Weapons']
+        self.savingthrowproficiency = ['STR','CON']
+        self.bonusproficiencyoptions = ['Animal Handling','Athletics','Intimidation','Nature','Perception','Survival']
+
+class Bard:
+    def __init__(self):
+        self.skills = {1: {"Spellcasting": "You can cast bard spells using Charisma as your spellcasting ability. You know two cantrips and four 1st-level spells at this level.",
+                            "Bardic Inspiration": "As a bonus action, give a creature within 60 feet an inspiration die (1d6) to add to one ability check, attack roll, or saving throw within the next 10 minutes."},
+                        2: {"Jack of All Trades": "Add half your proficiency bonus, rounded down, to any ability check that doesn’t already include your proficiency bonus.",
+                            "Song of Rest": "During a short rest, you can use soothing music or oration to help allies regain hit points. Each creature that hears you regains an extra 1d6 HP when using Hit Dice to heal."},
+                        3: {"Bard College": "Choose a Bard College (College of Lore or College of Valor), which grants additional features at levels 3, 6, and 14.",
+                            "Expertise": "Choose two of your skill proficiencies, or one of your skill proficiencies and your proficiency with one musical instrument. Your proficiency bonus is doubled for any ability check you make with the chosen proficiencies."},
+                        4: {"Ability Score Improvement": "Increase one ability score by 2, or two ability scores by 1 each. You cannot increase an ability score above 20."},
+                        5: {"Bardic Inspiration (d8)": "Your Bardic Inspiration die increases to a d8."},
+                        6: {"Countercharm": "As an action, you can start a performance that lasts until the end of your next turn. During that time, you and any friendly creatures within 30 feet have advantage on saving throws against being frightened or charmed.",
+                            "College Feature": "Gain an additional feature from your chosen Bard College."},
+                        7: {"Font of Inspiration": "You regain all expended uses of Bardic Inspiration when you finish a short or long rest."},
+                        8: {"Ability Score Improvement": "Increase one ability score by 2, or two ability scores by 1 each. You cannot increase an ability score above 20."},
+                        9: {"Song of Rest (d8)": "The extra healing from your Song of Rest increases to 1d8."},
+                        10: {"Bardic Inspiration (d10)": "Your Bardic Inspiration die increases to a d10.",
+                             "Expertise": "Choose two more skill proficiencies, or one skill proficiency and one musical instrument. Your proficiency bonus is doubled for any ability check you make with the chosen proficiencies.",
+                             "Magical Secrets": "Choose two spells from any class, including the bard spell list. The chosen spells count as bard spells for you."},
+                        11: {"Spellcasting (6th-level spells)": "You gain access to 6th-level spells."},
+                        12: {"Ability Score Improvement": "Increase one ability score by 2, or two ability scores by 1 each. You cannot increase an ability score above 20."},
+                        13: {"Song of Rest (d10)": "The extra healing from your Song of Rest increases to 1d10.",
+                             "Spellcasting (7th-level spells)": "You gain access to 7th-level spells."},
+                        14: {"Bardic Inspiration (d12)": "Your Bardic Inspiration die increases to a d12.",
+                             "Magical Secrets": "Choose two more spells from any class, including the bard spell list. The chosen spells count as bard spells for you.",
+                             "College Feature": "Gain an additional feature from your chosen Bard College."},
+                        15: {"Spellcasting (8th-level spells)": "You gain access to 8th-level spells."},
+                        16: {"Ability Score Improvement": "Increase one ability score by 2, or two ability scores by 1 each. You cannot increase an ability score above 20."},
+                        17: {"Song of Rest (d12)": "The extra healing from your Song of Rest increases to 1d12.",
+                             "Spellcasting (9th-level spells)": "You gain access to 9th-level spells."},
+                        18: {"Magical Secrets": "Choose two more spells from any class, including the bard spell list. The chosen spells count as bard spells for you."},
+                        19: {"Ability Score Improvement": "Increase one ability score by 2, or two ability scores by 1 each. You cannot increase an ability score above 20."},
+                        20: {"Superior Inspiration": "When you roll initiative and have no uses of Bardic Inspiration left, you regain one use."}}
+        self.featlevels = [4,8,12,16,19]
+        self.proficiencies = ['Light Armor','Simple Weapons','Hand Crossbows','Longswords','Rapiers','Shortswords','Tools (Musical Insturments)']
+        self.savingthrowproficiency = ['DEX','CHR']
+        self.bonusproficiencyoptions = []
+
+class Cleric:
+    def __init__(self):
+        self.skills = 
+        self.featlevels = [4,8,12,16,19]
+        self.proficiencies = ['Light Armor','Medium Armor','Shields','Simple Weapons','Hand Crossbows','Longswords','Rapiers','Shortswords','Tools (Musical Insturments)']
+        self.savingthrowproficiency = ['DEX','CHR']
+        self.bonusproficiencyoptions = []        
+
+
+
 
 
 class Weapon:
     #DMGTYPES = ['Bludgeoning','Slashing','Piercing']
-    def __init__(self,name,dmgtype,bonus=None,qty=1,size=4) -> None:
+    def __init__(self,name,dmgtype,bonus=None,qty=1,size=4,weight=0) -> None:
         self.name = name
         self.dmgtype = dmgtype
         self.bonus = bonus
-        self.damage = {'Quantity':qty,'Size':size}  
+        self.damage = {'Quantity':qty,
+                       'Size':size}  
+        self.weight = weight
 
 class Armor:
     #ARMORTYPES = ['Clothing','Light','Medium','Heavy']
-    def __init__(self,armortype,position,ac=10,bonus=None) -> None:
+    def __init__(self,armortype,position,ac=10,bonus=None,weight=0) -> None:
         self.ac = ac
         self.armortype = armortype
         self.position = position
         self.bonus = bonus
+        self.weight = weight
 
 class Consumable:
-    def __init__(self,name,stacksize=99,stat='',amount=0,status='') -> None:
+    def __init__(self,name,stacksize=99,stat='',amount=0,status='',weight=0) -> None:
         self.name = name
         self.stacksize = stacksize
-        self.effect = {'Stat':stat,'Increase':amount}
+        self.effect = {'Stat':stat,
+                       'Increase':amount}
         self.status = status
+        self.weight = weight
 
 class OffHand:
-    def __init__(self,ac=0,bonus='',stat='',amount=0) -> None:
+    def __init__(self,ac=0,bonus='',stat='',amount=0,weight=0) -> None:
         self.ac = ac
         self.bonus = bonus
-        self.effect = {'Stat':stat,'Increase':amount}
+        self.effect = {'Stat':stat,
+                       'Increase':amount}
+        self.weight = weight
 
 class Event:
     def __init__(self,reward=[]):
@@ -434,6 +689,3 @@ class Event:
         for item in self.reward:
             character.inventory.appened(item)
 
-jon = Character()
-jon.set_alignment()
-print(jon.alignment)
