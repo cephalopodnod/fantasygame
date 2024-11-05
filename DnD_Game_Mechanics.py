@@ -145,6 +145,7 @@ class Character:
             self.movedistance = 30
         self.age = 0
         self.alignment = ''
+        self.inventory = []
 
     def set_age(self,age=0):
         self.age = age
@@ -213,13 +214,30 @@ class Character:
         else:
             pass
 
+    def use_item(self,item):
+        self.inventory[item] = self.inventory[item] - 1
+
+    def add_item(self,item,qty=1):
+        self.inventory[item] = qty
+
+    def equip_weapon(self,weapon):
+        self.equipment['Main Hand'] = weapon
+        self.inventory[weapon] = self.inventory[weapon] - 1
+
+    def equip_armor(self,armor,location):
+        self.equipment[location] = armor
+        self.inventory[armor] = self.inventory[armor] - 1
+        self.ac = armor.ac + self.ac
+        self.equipment[self.location] = self
+
+
 class Weapon:
     #DMGTYPES = ['Bludgeoning','Slashing','Piercing']
     def __init__(self,name,dmgtype,bonus=None,qty=1,size=4) -> None:
         self.name = name
         self.dmgtype = dmgtype
         self.bonus = bonus
-        self.damage = {'Quantity':qty,'Size':size}     
+        self.damage = {'Quantity':qty,'Size':size}  
 
 class Armor:
     #ARMORTYPES = ['Clothing','Light','Medium','Heavy']
@@ -229,10 +247,6 @@ class Armor:
         self.position = position
         self.bonus = bonus
 
-    def equip(self,character):
-        character.ac = character.ac + self.ac
-        character.equipment[self.position] = self
-
 class Consumable:
     def __init__(self,name,stacksize=99,stat='',amount=0,status='') -> None:
         self.name = name
@@ -241,8 +255,20 @@ class Consumable:
         self.status = status
 
 class OffHand:
-    def __init__(self) -> None:
-        pass
+    def __init__(self,ac=0,bonus='',stat='',amount=0) -> None:
+        self.ac = ac
+        self.bonus = bonus
+        self.effect = {'Stat':stat,'Increase':amount}
+
+class Event:
+    def __init__(self,reward=[]):
+        self.state = True
+        self.reward = []
+        
+    def complete(self,character):
+        self.state = False
+        for item in self.reward:
+            character.inventory.appened(item)
 
 
 jon = Character()
