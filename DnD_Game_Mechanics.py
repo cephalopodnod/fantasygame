@@ -798,72 +798,32 @@ class Paladin:
 
 class Ranger:
     def __init__(self):
-        self.skills = {1: {
-        "Favored Enemy": "You gain a favored enemy, which grants advantages in tracking and knowledge about a specific type of creature (e.g., beasts, dragons). You also gain proficiency with Survival to track them.",
-        "Natural Explorer": "You are proficient in navigating through specific terrains, gaining bonuses like faster travel and easier tracking in certain environments. You also gain advantage on checks to forage and avoid getting lost.",
-        "Ranger's Prey": "You can choose a favored enemy and, once per turn, deal additional damage to it when you hit it with a weapon attack.",
-        "Spellcasting": "You gain the ability to cast Ranger spells, with Wisdom as your spellcasting modifier. You know two 1st-level spells and can prepare a number of spells equal to your Wisdom modifier + half your Ranger level (rounded down)."
-    },
-    2: {
-        "Fighting Style": "Choose a fighting style, such as Archery, Defense, or Two-Weapon Fighting. Each grants a combat benefit like a bonus to ranged attacks or defense while wielding a shield.",
-        "Primeval Awareness": "You can choose a type of terrain (such as forest, desert, etc.) and gain advantages when traveling through that terrain or tracking creatures associated with that environment."
-    },
-    3: {
-        "Ranger Archetype": "Choose an archetype, such as Hunter, Beast Master, or Gloom Stalker. Each grants unique abilities at levels 3, 7, 11, and 15.",
-        "Hunter's Mark": "As a bonus action, mark a target and deal extra damage to it when you hit with a weapon attack. You can only have one Hunter's Mark at a time, and it lasts for an hour or until the target drops to 0 hit points."
-    },
-    4: {
-        "Ability Score Improvement": "Increase one ability score by 2, or two ability scores by 1 each. You cannot increase an ability score above 20."
-    },
-    5: {
-        "Extra Attack": "You can attack twice, instead of once, whenever you take the Attack action on your turn.",
-        "Spellcasting (Improved)": "You gain access to additional spells as you level up, such as 2nd-level spells at this level."
-    },
-    6: {
-        "Hunter's Prey": "You gain the ability to choose a special combat technique to enhance your effectiveness in combat, such as Colossus Slayer, Giant Killer, or Horde Breaker."
-    },
-    7: {
-        "Ranger Archetype Feature": "Gain an additional feature from your chosen Ranger archetype."
-    },
-    8: {
-        "Ability Score Improvement": "Increase one ability score by 2, or two ability scores by 1 each. You cannot increase an ability score above 20."
-    },
-    9: {
-        "Nimble Escape": "You gain the ability to take the Dash or Disengage action as a bonus action. This allows you to move quickly through combat and avoid damage."
-    },
-    10: {
-        "Hunter's Mark (Improved)": "You can mark a second target simultaneously with Hunter's Mark, allowing you to deal extra damage to two different creatures at once."
-    },
-    11: {
-        "Ranger Archetype Feature": "Gain an additional feature from your chosen Ranger archetype."
-    },
-    12: {
-        "Ability Score Improvement": "Increase one ability score by 2, or two ability scores by 1 each. You cannot increase an ability score above 20."
-    },
-    13: {
-        "Camouflage": "You can use the Hide action even when you are only lightly obscured by natural elements, such as foliage or fog."
-    },
-    14: {
-        "Feral Sense": "You can sense the presence of creatures within 30 feet of you that are invisible or hidden, giving you an advantage against them."
-    },
-    15: {
-        "Ranger Archetype Feature": "Gain an additional feature from your chosen Ranger archetype."
-    },
-    16: {
-        "Ability Score Improvement": "Increase one ability score by 2, or two ability scores by 1 each. You cannot increase an ability score above 20."
-    },
-    17: {
-        "Slayer's Endurance": "You gain resistance to damage from the favored enemy types and automatically succeed on saving throws against effects they cause."
-    },
-    18: {
-        "Land's Stride": "You can move through difficult terrain without slowing your pace, and you can pass through plants and underbrush without being slowed or hindered."
-    },
-    19: {
-        "Ability Score Improvement": "Increase one ability score by 2, or two ability scores by 1 each. You cannot increase an ability score above 20."
-    },
-    20: {
-        "Ranger's Mastery": "You gain the ability to take a bonus action to deal additional damage to creatures you’ve marked with Hunter's Mark, and you also gain immunity to poison and disease."
-    }}
+        self.skills = {1: {"Favored Enemy": "You gain a favored enemy, which grants advantages in tracking and knowledge about a specific type of creature (e.g., beasts, dragons). You also gain proficiency with Survival to track them.",
+                            "Natural Explorer": "You are proficient in navigating through specific terrains, gaining bonuses like faster travel and easier tracking in certain environments. You also gain advantage on checks to forage and avoid getting lost.",
+                            "Ranger's Prey": "You can choose a favored enemy and, once per turn, deal additional damage to it when you hit it with a weapon attack.",
+                            "Spellcasting": "You gain the ability to cast Ranger spells, with Wisdom as your spellcasting modifier. You know two 1st-level spells and can prepare a number of spells equal to your Wisdom modifier + half your Ranger level (rounded down)."},
+                        2: {"Fighting Style": "Choose a fighting style, such as Archery, Defense, or Two-Weapon Fighting. Each grants a combat benefit like a bonus to ranged attacks or defense while wielding a shield.",
+                            "Primeval Awareness": "You can choose a type of terrain (such as forest, desert, etc.) and gain advantages when traveling through that terrain or tracking creatures associated with that environment."},
+                        3: {"Ranger Archetype": "Choose an archetype, such as Hunter, Beast Master, or Gloom Stalker. Each grants unique abilities at levels 3, 7, 11, and 15.",
+                            "Hunter's Mark": "As a bonus action, mark a target and deal extra damage to it when you hit with a weapon attack. You can only have one Hunter's Mark at a time, and it lasts for an hour or until the target drops to 0 hit points."},
+                        4: {"Ability Score Improvement": "Increase one ability score by 2, or two ability scores by 1 each. You cannot increase an ability score above 20."},
+                        5: {"Extra Attack": "You can attack twice, instead of once, whenever you take the Attack action on your turn.",
+                            "Spellcasting (Improved)": "You gain access to additional spells as you level up, such as 2nd-level spells at this level."},
+                        6: {"Hunter's Prey": "You gain the ability to choose a special combat technique to enhance your effectiveness in combat, such as Colossus Slayer, Giant Killer, or Horde Breaker."},
+                        7: {"Ranger Archetype Feature": "Gain an additional feature from your chosen Ranger archetype."},
+                        8: {"Ability Score Improvement": "Increase one ability score by 2, or two ability scores by 1 each. You cannot increase an ability score above 20."},
+                        9: {"Nimble Escape": "You gain the ability to take the Dash or Disengage action as a bonus action. This allows you to move quickly through combat and avoid damage."},
+                        10: {"Hunter's Mark (Improved)": "You can mark a second target simultaneously with Hunter's Mark, allowing you to deal extra damage to two different creatures at once."},
+                        11: {"Ranger Archetype Feature": "Gain an additional feature from your chosen Ranger archetype."},
+                        12: {"Ability Score Improvement": "Increase one ability score by 2, or two ability scores by 1 each. You cannot increase an ability score above 20."},
+                        13: {"Camouflage": "You can use the Hide action even when you are only lightly obscured by natural elements, such as foliage or fog."},
+                        14: {"Feral Sense": "You can sense the presence of creatures within 30 feet of you that are invisible or hidden, giving you an advantage against them."},
+                        15: {"Ranger Archetype Feature": "Gain an additional feature from your chosen Ranger archetype."},
+                        16: {"Ability Score Improvement": "Increase one ability score by 2, or two ability scores by 1 each. You cannot increase an ability score above 20."},
+                        17: {"Slayer's Endurance": "You gain resistance to damage from the favored enemy types and automatically succeed on saving throws against effects they cause."},
+                        18: {"Land's Stride": "You can move through difficult terrain without slowing your pace, and you can pass through plants and underbrush without being slowed or hindered."},
+                        19: {"Ability Score Improvement": "Increase one ability score by 2, or two ability scores by 1 each. You cannot increase an ability score above 20."},
+                        20: {"Ranger's Mastery": "You gain the ability to take a bonus action to deal additional damage to creatures you’ve marked with Hunter's Mark, and you also gain immunity to poison and disease."}}
         self.featlevels = [4,8,12,16,19]
         self.proficiencies = ['Light Armor','Medium Armor','Shields','Simple Weapons','Martial Weapons']
         self.savingthrowproficiency = ['STR','DEX']
@@ -872,69 +832,29 @@ class Ranger:
 
 class Rogue:
     def __init__(self):
-        self.skills = {1: {
-        "Sneak Attack": "Once per turn, you can deal extra damage with a finesse or ranged weapon attack if you have advantage on the attack roll, or if another enemy of the target is within 5 feet of it and isn't incapacitated. The extra damage starts at 1d6 and increases as you level up.",
-        "Thieves' Cant": "You learn a secret language known only to other Rogues and those who know the Thieves' Cant. You can use it to communicate in code with other thieves.",
-        "Proficiency": "You gain proficiency with light armor, simple weapons, hand crossbows, longswords, rapiers, shortswords, thieves' tools, and two skills of your choice."
-    },
-    2: {
-        "Cunning Action": "You can take a bonus action on each of your turns in combat to Dash, Disengage, or Hide."
-    },
-    3: {
-        "Roguish Archetype": "Choose an archetype, such as Thief, Assassin, or Arcane Trickster. Each grants unique abilities at levels 3, 9, 13, and 17.",
-        "Sneak Attack (Improved)": "Your Sneak Attack damage increases to 2d6, and it continues to increase with your Rogue level."
-    },
-    4: {
-        "Ability Score Improvement": "Increase one ability score by 2, or two ability scores by 1 each. You cannot increase an ability score above 20."
-    },
-    5: {
-        "Uncanny Dodge": "When an attacker that you can see hits you with an attack, you can use your reaction to halve the damage."
-    },
-    6: {
-        "Expertise": "Choose two of your skill proficiencies. Your proficiency bonus is doubled for any ability check you make that uses either of the chosen proficiencies."
-    },
-    7: {
-        "Evasion": "When you are subjected to an effect that allows you to make a Dexterity saving throw to take only half damage, you instead take no damage if you succeed on the saving throw, and only half damage if you fail."
-    },
-    8: {
-        "Ability Score Improvement": "Increase one ability score by 2, or two ability scores by 1 each. You cannot increase an ability score above 20."
-    },
-    9: {
-        "Roguish Archetype Feature": "Gain an additional feature from your chosen Rogue archetype."
-    },
-    10: {
-        "Sneak Attack (Improved)": "Your Sneak Attack damage increases to 3d6, and it continues to increase with your Rogue level."
-    },
-    11: {
-        "Reliable Talent": "Whenever you make an ability check that lets you add your proficiency bonus, you can treat a roll of 9 or lower as a 10."
-    },
-    12: {
-        "Ability Score Improvement": "Increase one ability score by 2, or two ability scores by 1 each. You cannot increase an ability score above 20."
-    },
-    13: {
-        "Roguish Archetype Feature": "Gain an additional feature from your chosen Rogue archetype."
-    },
-    14: {
-        "Blindsense": "If you are able to hear, you can sense the location of any creature within 10 feet of you that is hidden, invisible, or otherwise out of sight."
-    },
-    15: {
-        "Sneak Attack (Improved)": "Your Sneak Attack damage increases to 4d6, and it continues to increase with your Rogue level."
-    },
-    16: {
-        "Ability Score Improvement": "Increase one ability score by 2, or two ability scores by 1 each. You cannot increase an ability score above 20."
-    },
-    17: {
-        "Roguish Archetype Feature": "Gain an additional feature from your chosen Rogue archetype."
-    },
-    18: {
-        "Elusive": "No attack roll has advantage against you while you aren't incapacitated."
-    },
-    19: {
-        "Ability Score Improvement": "Increase one ability score by 2, or two ability scores by 1 each. You cannot increase an ability score above 20."
-    },
-    20: {
-        "Stroke of Luck": "If you miss with an attack roll, you can turn the miss into a hit. Alternatively, if you fail an ability check, you can treat the roll as a 20."
-    }}
+        self.skills = {1: {"Sneak Attack": "Once per turn, you can deal extra damage with a finesse or ranged weapon attack if you have advantage on the attack roll, or if another enemy of the target is within 5 feet of it and isn't incapacitated. The extra damage starts at 1d6 and increases as you level up.",
+                            "Thieves' Cant": "You learn a secret language known only to other Rogues and those who know the Thieves' Cant. You can use it to communicate in code with other thieves.",
+                            "Proficiency": "You gain proficiency with light armor, simple weapons, hand crossbows, longswords, rapiers, shortswords, thieves' tools, and two skills of your choice."},
+                        2: {"Cunning Action": "You can take a bonus action on each of your turns in combat to Dash, Disengage, or Hide."},
+                        3: {"Roguish Archetype": "Choose an archetype, such as Thief, Assassin, or Arcane Trickster. Each grants unique abilities at levels 3, 9, 13, and 17.",
+                            "Sneak Attack (Improved)": "Your Sneak Attack damage increases to 2d6, and it continues to increase with your Rogue level."},
+                        4: {"Ability Score Improvement": "Increase one ability score by 2, or two ability scores by 1 each. You cannot increase an ability score above 20."},
+                        5: {"Uncanny Dodge": "When an attacker that you can see hits you with an attack, you can use your reaction to halve the damage."},
+                        6: {"Expertise": "Choose two of your skill proficiencies. Your proficiency bonus is doubled for any ability check you make that uses either of the chosen proficiencies."},
+                        7: {"Evasion": "When you are subjected to an effect that allows you to make a Dexterity saving throw to take only half damage, you instead take no damage if you succeed on the saving throw, and only half damage if you fail."},
+                        8: {"Ability Score Improvement": "Increase one ability score by 2, or two ability scores by 1 each. You cannot increase an ability score above 20."},
+                        9: {"Roguish Archetype Feature": "Gain an additional feature from your chosen Rogue archetype."},
+                        10: {"Sneak Attack (Improved)": "Your Sneak Attack damage increases to 3d6, and it continues to increase with your Rogue level."},
+                        11: {"Reliable Talent": "Whenever you make an ability check that lets you add your proficiency bonus, you can treat a roll of 9 or lower as a 10."},
+                        12: {"Ability Score Improvement": "Increase one ability score by 2, or two ability scores by 1 each. You cannot increase an ability score above 20."},
+                        13: {"Roguish Archetype Feature": "Gain an additional feature from your chosen Rogue archetype."},
+                        14: {"Blindsense": "If you are able to hear, you can sense the location of any creature within 10 feet of you that is hidden, invisible, or otherwise out of sight."},
+                        15: {"Sneak Attack (Improved)": "Your Sneak Attack damage increases to 4d6, and it continues to increase with your Rogue level."},
+                        16: {"Ability Score Improvement": "Increase one ability score by 2, or two ability scores by 1 each. You cannot increase an ability score above 20."},
+                        17: {"Roguish Archetype Feature": "Gain an additional feature from your chosen Rogue archetype."},
+                        18: {"Elusive": "No attack roll has advantage against you while you aren't incapacitated."},
+                        19: {"Ability Score Improvement": "Increase one ability score by 2, or two ability scores by 1 each. You cannot increase an ability score above 20."},
+                        20: {"Stroke of Luck": "If you miss with an attack roll, you can turn the miss into a hit. Alternatively, if you fail an ability check, you can treat the roll as a 20."}}
         self.featlevels = [4,8,10,12,16,19]
         self.proficiencies = ['Light Armor','Simple Weapons','Hand Crossbows','Longswords','Rapiers','Shortswords',"Tools (Thieve's Tools)"]
         self.savingthrowproficiency = ['DEX','INT']
@@ -944,29 +864,29 @@ class Rogue:
 class Sorcerer:
     def __init__(self):
         self.skills = {1: {"Sorcerer's Spellcasting": "You can cast spells using Charisma as your spellcasting modifier. You know a number of cantrips and 1st-level spells, and can cast spells using spell slots. You prepare spells based on your Charisma modifier and level.",
-        "Sorcerer's Origin": "Choose a Sorcerer's Origin (Draconic Bloodline, Wild Magic, or other homebrew origins) that gives you unique abilities at level 1 and further as you level up.",
-        "Font of Magic": "You gain Sorcery Points, which allow you to convert them into spell slots or use them to fuel Metamagic. At 1st level, you have a pool of Sorcery Points equal to your Sorcerer level."},
-    2: {"Metamagic": "You gain the ability to modify your spells with Metamagic options. At level 2, you can choose two Metamagic options, such as Quickened Spell (casting as a bonus action) or Twinned Spell (targeting an additional creature)."},
-    3: {"Sorcerer's Origin Feature": "Gain an additional feature from your chosen Sorcerer's Origin (e.g., Draconic Resilience, Wild Magic Surge, or other abilities from the chosen Origin).",
-        "Spellcasting (Improved)": "At this level, you gain access to 2nd-level spells and can prepare more spells."},
-    4: {"Ability Score Improvement": "Increase one ability score by 2, or two ability scores by 1 each. You cannot increase an ability score above 20."},
-    5: {"Sorcery Points (Improved)": "You gain additional Sorcery Points and can convert them into higher-level spell slots.",
-        "Metamagic (Improved)": "You can select a third Metamagic option, allowing you more flexibility in casting spells."},
-    6: {"Sorcerer's Origin Feature": "Gain an additional feature from your chosen Sorcerer's Origin."},
-    7: {"Spellcasting (Improved)": "You gain access to 3rd-level spells and can prepare more spells."},
-    8: {"Ability Score Improvement": "Increase one ability score by 2, or two ability scores by 1 each. You cannot increase an ability score above 20."},
-    9: {"Sorcerer's Origin Feature": "Gain an additional feature from your chosen Sorcerer's Origin."},
-    10: {"Metamagic (Improved)": "You can select a fourth Metamagic option."},
-    11: {"Spellcasting (Improved)": "You gain access to 5th-level spells and can prepare more spells."},
-    12: {"Ability Score Improvement": "Increase one ability score by 2, or two ability scores by 1 each. You cannot increase an ability score above 20."},
-    13: {"Sorcerer's Origin Feature": "Gain an additional feature from your chosen Sorcerer's Origin."},
-    14: {"Spellcasting (Improved)": "You gain access to 7th-level spells and can prepare more spells."},
-    15: {"Metamagic (Improved)": "You can select a fifth Metamagic option."},
-    16: {"Ability Score Improvement": "Increase one ability score by 2, or two ability scores by 1 each. You cannot increase an ability score above 20."},
-    17: {"Sorcerer's Origin Feature": "Gain an additional feature from your chosen Sorcerer's Origin."},
-    18: {"Spellcasting (Improved)": "You gain access to 9th-level spells and can prepare more spells."},
-    19: {"Ability Score Improvement": "Increase one ability score by 2, or two ability scores by 1 each. You cannot increase an ability score above 20."},
-    20: {"Sorcerous Restoration": "You regain 4 Sorcery Points when you finish a short rest. This allows you to regain your magical resources more quickly."}}
+                            "Sorcerer's Origin": "Choose a Sorcerer's Origin (Draconic Bloodline, Wild Magic, or other homebrew origins) that gives you unique abilities at level 1 and further as you level up.",
+                            "Font of Magic": "You gain Sorcery Points, which allow you to convert them into spell slots or use them to fuel Metamagic. At 1st level, you have a pool of Sorcery Points equal to your Sorcerer level."},
+                        2: {"Metamagic": "You gain the ability to modify your spells with Metamagic options. At level 2, you can choose two Metamagic options, such as Quickened Spell (casting as a bonus action) or Twinned Spell (targeting an additional creature)."},
+                        3: {"Sorcerer's Origin Feature": "Gain an additional feature from your chosen Sorcerer's Origin (e.g., Draconic Resilience, Wild Magic Surge, or other abilities from the chosen Origin).",
+                            "Spellcasting (Improved)": "At this level, you gain access to 2nd-level spells and can prepare more spells."},
+                        4: {"Ability Score Improvement": "Increase one ability score by 2, or two ability scores by 1 each. You cannot increase an ability score above 20."},
+                        5: {"Sorcery Points (Improved)": "You gain additional Sorcery Points and can convert them into higher-level spell slots.",
+                            "Metamagic (Improved)": "You can select a third Metamagic option, allowing you more flexibility in casting spells."},
+                        6: {"Sorcerer's Origin Feature": "Gain an additional feature from your chosen Sorcerer's Origin."},
+                        7: {"Spellcasting (Improved)": "You gain access to 3rd-level spells and can prepare more spells."},
+                        8: {"Ability Score Improvement": "Increase one ability score by 2, or two ability scores by 1 each. You cannot increase an ability score above 20."},
+                        9: {"Sorcerer's Origin Feature": "Gain an additional feature from your chosen Sorcerer's Origin."},
+                        10: {"Metamagic (Improved)": "You can select a fourth Metamagic option."},
+                        11: {"Spellcasting (Improved)": "You gain access to 5th-level spells and can prepare more spells."},
+                        12: {"Ability Score Improvement": "Increase one ability score by 2, or two ability scores by 1 each. You cannot increase an ability score above 20."},
+                        13: {"Sorcerer's Origin Feature": "Gain an additional feature from your chosen Sorcerer's Origin."},
+                        14: {"Spellcasting (Improved)": "You gain access to 7th-level spells and can prepare more spells."},
+                        15: {"Metamagic (Improved)": "You can select a fifth Metamagic option."},
+                        16: {"Ability Score Improvement": "Increase one ability score by 2, or two ability scores by 1 each. You cannot increase an ability score above 20."},
+                        17: {"Sorcerer's Origin Feature": "Gain an additional feature from your chosen Sorcerer's Origin."},
+                        18: {"Spellcasting (Improved)": "You gain access to 9th-level spells and can prepare more spells."},
+                        19: {"Ability Score Improvement": "Increase one ability score by 2, or two ability scores by 1 each. You cannot increase an ability score above 20."},
+                        20: {"Sorcerous Restoration": "You regain 4 Sorcery Points when you finish a short rest. This allows you to regain your magical resources more quickly."}}
         self.featlevels = [4,8,12,16,19]
         self.proficiencies = ['Daggers','Darts','Slings','Quarterstaffs','Light Crossbows']
         self.savingthrowproficiency = ['CON','CHR']
@@ -1088,3 +1008,14 @@ class Event:
         for item in self.reward:
             character.inventory.appened(item)
 
+
+
+SPELLS_LIST = [{"Fireball": {"school": "Evocation","level": 3,"damage_dice": "8d6","elemental_damage_type": "fire","elemental_damage_dice": None,"casting_time": "1 action","range": "150 feet","duration": "Instantaneous","classes": ["Sorcerer", "Wizard"]}},
+                {"Acid Splash": {"school": "Conjuration","level": 0,"damage_dice": "1d6","elemental_damage_type": "acid","elemental_damage_dice": None,"casting_time": "Bonus action","range": "60 feet","duration": "Instantaneous","classes": ['Artificer',"Sorcerer", "Wizard"]}},
+                {"Blade Ward": {"school": "Abjuration","level": 0,"damage_dice": None,"elemental_damage_type": None,"elemental_damage_dice": None,"casting_time": "Bonus action","range": "self","duration": "1 round","classes": ['Bard',"Sorcerer", 'Warlock', "Wizard"]}},
+                {"Booming Blade": {"school": "Evocation","level": 0,"damage_dice": '1d8',"elemental_damage_type": 'thunder',"elemental_damage_dice": None,"casting_time": "1 action","range": "self(5ft radius)","duration": "1 round","classes": ['Artificer',"Sorcerer", 'Warlock', "Wizard"]}},
+                {"Chill Touch": {"school": "Necromancy","level": 0,"damage_dice": '1d8',"elemental_damage_type": 'necrotic',"elemental_damage_dice": None,"casting_time": "1 action","range": "120 feet","duration": "1 round","classes": ["Sorcerer", 'Warlock', "Wizard"]}},
+                {"Control Flames": {"school": "Transmutation","level": 0,"damage_dice": None,"elemental_damage_type": 'fire',"elemental_damage_dice": None,"casting_time": "1 action","range": "60 feet","duration": "1 hour","classes": ['Druid',"Sorcerer", "Wizard"]}},
+                {"Create Bonfire": {"school": "Conjuration","level": 0,"damage_dice": '1d8',"elemental_damage_type": 'firer',"elemental_damage_dice": None,"casting_time": "1 action","range": "60 feet","duration": "1 minute, concentration","classes": ['Artificer', 'Druid', "Sorcerer", 'Warlock', "Wizard"]}},
+                
+                ]
