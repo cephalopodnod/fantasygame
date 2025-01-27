@@ -23,7 +23,13 @@ class Combat:
             dicerolls[each] = initiative 
         self.fightorder = dict(sorted(dicerolls.items(),key=lambda item: item[1]))
 
-    def end_turn(self):
+    def start_turn(self,character):
+        for character in self.fightorder:
+            if self.fightorder[character] == self.currentturn:
+                #character can do 1 action(cast spell, use skill, standard action) and do 1 bonus action, there are skills that allow you to do multiple actions or bonus actions.
+                pass    
+    
+    def end_turn(self,character):
         if self.currentturn != self.fightsize:
             self.currentturn += 1
         else:
@@ -32,3 +38,5 @@ class Combat:
     def opportunity_attack(self,attacker,target):
         if target.position <= attacker.position + 3:
             attacker.actions['attack']
+
+    
