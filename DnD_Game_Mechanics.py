@@ -1,17 +1,31 @@
+import pymysql
+import json
+import random
+
+Database = pymysql.connect(
+    host='localhost',
+    user='root',
+    password='Goddess0!',
+    database='dndgame'
+)
+#To pull something from db, call Database.cursor(), this is like an instance of the DB and then <cursor>.execute('<SQL QUERY>')
+#To close the connection to the db, call Database.close(), this ends the transaction
+
+
 class Dice:
-    import random
     def __init__(self,qty,size=4) -> None:
         self.qty = qty
         self.size = size
 
     def roll(self):
-        import random
         value = 0
         for die in range(1,self.qty+1):
             value += random.randint(1,self.size)
+        #     print(value)
+        # print(value)
         return value
     
-class Character:
+class Character: #(Database):
     INITIAL_STAT_POINTS = 27
     POSSIBLE_FEATS = {
     "Actor": "Gain +1 to Charisma. Advantage on Deception and Performance checks when trying to pass as a different person. Can mimic voices after hearing them.",
@@ -57,177 +71,7 @@ class Character:
     "War Caster": "Advantage on Constitution saves to maintain concentration, can cast spells instead of making opportunity attacks, and can perform somatic components with weapons or shields.",
     "Weapon Master": "Gain proficiency with four weapons of your choice and +1 to Strength or Dexterity."}
     POSSIBLE_CLASSES = classes = ["Barbarian","Bard","Cleric","Druid","Fighter","Monk","Paladin","Ranger","Rogue","Sorcerer","Warlock","Wizard"]
-    SPELLS_LIST = [{"Acid Splash": {"name": "Acid Splash",
-                                "school_of_magic": "Conjuration",
-                                "spell_level": 0,
-                                "damage_dice": "1d6",
-                                "elemental_damage_type": "acid",
-                                "elemental_damage_dice": None,
-                                "casting_time": "1 action",
-                                "range": "60 feet",
-                                "duration": "Instantaneous",
-                                "classes": ["Sorcerer", "Wizard"]}},
-                {"Chill Touch": {"name": "Chill Touch",
-                                "school_of_magic": "Necromancy",
-                                "spell_level": 0,
-                                "damage_dice": "1d8",
-                                "elemental_damage_type": "necrotic",
-                                "elemental_damage_dice": None,
-                                "casting_time": "1 action",
-                                "range": "120 feet",
-                                "duration": "1 round",
-                                "classes": ["Sorcerer", "Warlock", "Wizard"]}},
-                {"Dancing Lights": {"name": "Dancing Lights",
-                                    "school_of_magic": "Evocation",
-                                    "spell_level": 0,
-                                    "damage_dice": None,
-                                    "elemental_damage_type": None,
-                                    "elemental_damage_dice": None,
-                                    "casting_time": "1 action",
-                                    "range": "120 feet",
-                                    "duration": "Concentration, up to 1 minute",
-                                    "classes": ["Bard", "Sorcerer", "Wizard"]}},
-                {"Fire Bolt": {"name": "Fire Bolt",
-                                "school_of_magic": "Evocation",
-                                "spell_level": 0,
-                                "damage_dice": "1d10",
-                                "elemental_damage_type": "fire",
-                                "elemental_damage_dice": None,
-                                "casting_time": "1 action",
-                                "range": "120 feet",
-                                "duration": "Instantaneous",
-                                "classes": ["Sorcerer", "Wizard"]}},
-                {"Guidance": {"name": "Guidance",
-                            "school_of_magic": "Divination",
-                            "spell_level": 0,
-                            "damage_dice": None,
-                            "elemental_damage_type": None,
-                            "elemental_damage_dice": None,
-                            "casting_time": "1 action",
-                            "range": "Touch",
-                            "duration": "Concentration, up to 1 minute",
-                            "classes": ["Cleric", "Druid"]}},
-                {"Light": {"name": "Light",
-                            "school_of_magic": "Evocation",
-                            "spell_level": 0,
-                            "damage_dice": None,
-                            "elemental_damage_type": None,
-                            "elemental_damage_dice": None,
-                            "casting_time": "1 action",
-                            "range": "Touch",
-                            "duration": "1 hour",
-                            "classes": ["Bard", "Cleric", "Sorcerer", "Wizard"]}},
-                {"Mage Hand": {"name": "Mage Hand",
-                                "school_of_magic": "Conjuration",
-                                "spell_level": 0,
-                                "damage_dice": None,
-                                "elemental_damage_type": None,
-                                "elemental_damage_dice": None,
-                                "casting_time": "1 action",
-                                "range": "30 feet",
-                                "duration": "1 minute",
-                                "classes": ["Bard", "Sorcerer", "Warlock", "Wizard"]}},
-                {"Mending": {"name": "Mending",
-                            "school_of_magic": "Transmutation",
-                            "spell_level": 0,
-                            "damage_dice": None,
-                            "elemental_damage_type": None,
-                            "elemental_damage_dice": None,
-                            "casting_time": "1 minute",
-                            "range": "Touch",
-                            "duration": "Instantaneous",
-                            "classes": ["Bard", "Cleric", "Druid", "Sorcerer", "Wizard"]}},
-                {"Message": {"name": "Message",
-                            "school_of_magic": "Transmutation",
-                            "spell_level": 0,
-                            "damage_dice": None,
-                            "elemental_damage_type": None,
-                            "elemental_damage_dice": None,
-                            "casting_time": "1 action",
-                            "range": "120 feet",
-                            "duration": "1 round",
-                            "classes": ["Bard", "Sorcerer", "Wizard"]}},
-                {"Minor Illusion": {"name": "Minor Illusion",
-                                    "school_of_magic": "Illusion",
-                                    "spell_level": 0,
-                                    "damage_dice": None,
-                                    "elemental_damage_type": None,
-                                    "elemental_damage_dice": None,
-                                    "casting_time": "1 action",
-                                    "range": "30 feet",
-                                    "duration": "1 minute",
-                                    "classes": ["Bard", "Sorcerer", "Warlock", "Wizard"]}},
-                {"Poison Spray": {"name": "Poison Spray",
-                                "school_of_magic": "Conjuration",
-                                "spell_level": 0,
-                                "damage_dice": "1d12",
-                                "elemental_damage_type": "poison",
-                                "elemental_damage_dice": None,
-                                "casting_time": "1 action",
-                                "range": "10 feet",
-                                "duration": "Instantaneous",
-                                "classes": ["Druid", "Sorcerer", "Warlock", "Wizard"]}},
-                {"Prestidigitation": {"name": "Prestidigitation",
-                                    "school_of_magic": "Transmutation",
-                                    "spell_level": 0,
-                                    "damage_dice": None,
-                                    "elemental_damage_type": None,
-                                    "elemental_damage_dice": None,
-                                    "casting_time": "1 action",
-                                    "range": "10 feet",
-                                    "duration": "Up to 1 hour",
-                                    "classes": ["Bard", "Sorcerer", "Warlock", "Wizard"]}},
-                {"Ray of Frost": {"name": "Ray of Frost",
-                                "school_of_magic": "Evocation",
-                                "spell_level": 0,
-                                "damage_dice": "1d8",
-                                "elemental_damage_type": "cold",
-                                "elemental_damage_dice": None,
-                                "casting_time": "1 action",
-                                "range": "60 feet",
-                                "duration": "Instantaneous",
-                                "classes": ["Sorcerer", "Wizard"]}},
-                {"Sacred Flame": {"name": "Sacred Flame",
-                                "school_of_magic": "Evocation",
-                                "spell_level": 0,
-                                "damage_dice": "1d8",
-                                "elemental_damage_type": "radiant",
-                                "elemental_damage_dice": None,
-                                "casting_time": "1 action",
-                                "range": "60 feet",
-                                "duration": "Instantaneous",
-                                "classes": ["Cleric"]}},
-                {"Shillelagh": {"name": "Shillelagh",
-                                "school_of_magic": "Transmutation",
-                                "spell_level": 0,
-                                "damage_dice": None,
-                                "elemental_damage_type": None,
-                                "elemental_damage_dice": None,
-                                "casting_time": "1 bonus action",
-                                "range": "Touch",
-                                "duration": "1 minute",
-                                "classes": ["Druid"]}},
-                {"Thorn Whip": {"name": "Thorn Whip",
-                                "school_of_magic": "Transmutation",
-                                "spell_level": 0,
-                                "damage_dice": "1d6",
-                                "elemental_damage_type": None,
-                                "elemental_damage_dice": None,
-                                "casting_time": "1 action",
-                                "range": "30 feet",
-                                "duration": "Instantaneous",
-                                "classes": ["Druid"]}},
-                {"Vicious Mockery": {"name": "Vicious Mockery",
-                                    "school_of_magic": "Enchantment",
-                                    "spell_level": 0,
-                                    "damage_dice": "1d4",
-                                    "elemental_damage_type": "psychic",
-                                    "elemental_damage_dice": None,
-                                    "casting_time": "1 action",
-                                    "range": "60 feet",
-                                    "duration": "Instantaneous",
-                                    "classes": ["Bard"]}}]
-
+    
     def __init__(self,position) -> None:
         self.race = ''
         self.subrace = ''
@@ -235,175 +79,32 @@ class Character:
         self.hp = 0
         self.ac = 10
         self.darkvision = 30
-        self.spellslots = {"0":0,
-                           "1":0,
-                           "2":0,
-                           "3":0,
-                           "4":0,
-                           "5":0,
-                           "6":0,
-                           "7":0,
-                           "8":0,
-                           "9":0}
-        self.spells = []
+        self.spellslots = 'PUT QUERY TO ACCESS FEATS DATA'
+        self.spells = 'PUT QUERY TO ACCESS FEATS DATA'
         self.actions = ['Attack','Move','Sprint','Jump','Shove','Disengage']
-        self.weaponskills = []
-        self.traits = []
-        self.stats = {"STR":8,
-                      "DEX":8,
-                      "CON":8,
-                      "WIS":8,
-                      "INT":8,
-                      "CHR":8}
-        self.equipment = {'Head':None,
-                          "Chest":None,
-                          "Legs":None,
-                          "Hands":None,
-                          "Back":None,
-                          "Main Hand":None,
-                          "Off Hand":None,
-                          "Neck":None,
-                          "Ring 1":None,
-                          "Ring 2":None}
-        self.proficiencies = {"Acrobatics": 0,
-                              "Animal Handling": 0,
-                              "Arcana": 0,
-                              "Athletics": 0,
-                              "Deception": 0,
-                              "History": 0,
-                              "Insight": 0,
-                              "Intimidation": 0,
-                              "Investigation": 0,
-                              "Medicine": 0,
-                              "Nature": 0,
-                              "Perception": 0,
-                              "Performance": 0,
-                              "Persuasion": 0,
-                              "Religion": 0,
-                              "Sleight of Hand": 0,
-                              "Stealth": 0,
-                              "Survival": 0,
-                              "Shields": 0,
-                              "Simple Weapons": 0,
-                              "Martial Weapons": 0}
-        self.armorproficiency = {'Clothing':True,
-                                'Light Armor':False,
-                                'Medium Armor':False,
-                                'Heavy Armor':False}
-        self.commonweaponproficiency = {"Club": False,
-                                "Dagger": False,    
-                                "Greatclub": False,    
-                                "Handaxe": False,    
-                                "Javelin": False,    
-                                "Light Hammer": False,    
-                                "Mace": False,    
-                                "Quarterstaff": False,    
-                                "Sickle": False,
-                                "Spear": False,    
-                                "Light Crossbow": False,    
-                                "Dart": False,    
-                                "Shortbow": False,    
-                                "Sling": False}
-        self.martialweaponproficiency = {"Battleaxe": False,
-                                "Flail": False,
-                                "Glaive": False,
-                                "Greataxe": False,
-                                "Greatsword": False,    
-                                "Halberd": False,    
-                                "Lance": False,    
-                                "Longsword": False,    
-                                "Maul": False,    
-                                "Morningstar": False,    
-                                "Pike": False,
-                                "Rapier": False,    
-                                "Scimitar": False,    
-                                "Shortsword": False,    
-                                "Trident": False,    
-                                "War Pick": False,    
-                                "Warhammer": False,    
-                                "Whip": False,    
-                                "Blowgun": False,
-                                "Hand Crossbow": False,    
-                                "Heavy Crossbow": False,    
-                                "Longbow": False,    
-                                "Net": False}                            
-        self.tools = {"Tools (Artisan’s tools)": 0,
-                      "Tools (Disguise Kit)": 0,
-                      "Tools (Forgery Kit)": 0,
-                      "Tools (Gaming Set)": 0,
-                      "Tools (Herbalism Kit)": 0,
-                      "Tools (Musical Instrument)": 0,
-                      "Tools (Navigator’s Tools)": 0,
-                      "Tools (Poisoner’s Kit)": 0,
-                      "Tools (Thieve's Tools)": 0}
-        self.vehicles = {"Vehicles (Land)": 0,
-                         "Vehicles (Water)": 0}
-        self.languages = {"Languages (Common)": 0,
-                          "Languages (Elvish)": 0,
-                          "Languages (Dwarvish)": 0,
-                          "Languages (Gnomish)": 0,
-                          "Languages (Halfling)": 0,
-                          "Languages (Orc)": 0,
-                          "Languages (Goblin)": 0,
-                          "Languages (Draconic)": 0,
-                          "Languages (Abyssal)": 0,
-                          "Languages (Infernal)": 0,
-                          "Languages (Celestial)": 0,
-                          "Languages (Sylvan)": 0,
-                          "Languages (Primordial)": 0,
-                          "Languages (Undercommon)":0,
-                          "Languages (Deep Speech)":0}
-        self.maxcarryweight = self.stats['STR'] * 15
-        self.carryweight = 0
-        if self.race == 'Halflings' or self.race == 'Dwarves' or self.race == 'Gnomes':
-            self.movedistance = 25
-        else:
-            self.movedistance = 30
-        self.age = 0
-        self.alignment = ''
-        self.inventory = []
-        self.feats = [{"Actor": False},
-                      {"Athlete": False},
-                      {"Alert": False},
-                      {"Charger": False},
-                      {"Crossbow Expert": False},
-                      {"Defensive Duelist": False},
-                      {"Dual Wielder": False},
-                      {"Dungeon Delver": False},
-                      {"Durable": False},
-                      {"Elemental Adept": False},
-                      {"Grappler": False},
-                      {"Great Weapon Master": False},
-                      {"Healer": False},
-                      {"Heavily Armored": False},
-                      {"Heavy Armor Master": False},
-                      {"Inspiring Leader": False},
-                      {"Keen Mind": False},
-                      {"Lightly Armored": False},
-                      {"Linguist": False},
-                      {"Lucky": False},
-                      {"Mage Slayer": False},
-                      {"Magic Initiate": False},
-                      {"Martial Adept": False},
-                      {"Medium Armor Master": False},
-                      {"Mobile": False},
-                      {"Moderately Armored": False},
-                      {"Mounted Combatant": False},
-                      {"Observant": False},
-                      {"Polearm Master": False},
-                      {"Resilient": False},
-                      {"Ritual Caster": False},
-                      {"Savage Attacker": False},
-                      {"Sentinel": False},
-                      {"Sharpshooter": False},
-                      {"Shield Master": False},
-                      {"Skilled": False},
-                      {"Skulker": False},
-                      {"Spell Sniper": False},
-                      {"Tavern Brawler": False},
-                      {"Tough": False},
-                      {"War Caster": False},
-                      {"Weapon Master": False}]
+        self.weaponskills = 'PUT QUERY TO ACCESS FEATS DATA'
+        self.traits = 'PUT QUERY TO ACCESS FEATS DATA'
+        self.STR = 'PUT QUERY TO ACCESS FEATS DATA'
+        self.DEX = 'PUT QUERY TO ACCESS FEATS DATA'
+        self.CON = 'PUT QUERY TO ACCESS FEATS DATA'
+        self.WIS = 'PUT QUERY TO ACCESS FEATS DATA'
+        self.INT = 'PUT QUERY TO ACCESS FEATS DATA'
+        self.CHR = 'PUT QUERY TO ACCESS FEATS DATA'
+        self.equipment = 'PUT QUERY TO ACCESS FEATS DATA'
+        self.proficiencies = 'PUT QUERY TO ACCESS FEATS DATA'
+        self.armorproficiency = 'PUT QUERY TO ACCESS FEATS DATA'
+        self.commonweaponproficiency = 'PUT QUERY TO ACCESS FEATS DATA'
+        self.martialweaponproficiency = 'PUT QUERY TO ACCESS FEATS DATA'                          
+        self.tools = 'PUT QUERY TO ACCESS FEATS DATA'
+        self.landVehicles = 'PUT QUERY TO ACCESS FEATS DATA'
+        self.waterVehicles = 'PUT QUERY TO ACCESS FEATS DATA'
+        self.languages = 'PUT QUERY TO ACCESS FEATS DATA'
+        self.maxcarryweight = 'PUT QUERY TO ACCESS FEATS DATA'
+        self.carryweight = 'PUT QUERY TO ACCESS FEATS DATA'
+        self.age = 'PUT QUERY TO ACCESS FEATS DATA'
+        self.alignment = 'PUT QUERY TO ACCESS FEATS DATA'
+        self.inventory = 'PUT QUERY TO ACCESS FEATS DATA'
+        self.feats = 'PUT QUERY TO ACCESS FEATS DATA'
         self.initiative = 0
         self.advantagerolls = {'STR': False, 
                                'DEX': False, 
@@ -411,23 +112,8 @@ class Character:
                                'WIS': False, 
                                'INT': False, 
                                'CHR': False}
-        self.featchoices = {'Athlete':'',
-                            'Elemental Adept':'',
-                            'Lightly Armored':'',
-                            'Magic Initiate':'',
-                            'Moderately Armored':'',
-                            'Observant':'',
-                            'Resilient':'',
-                            'Skilled: Choice 1':'',
-                            'Skilled: Choice 2':'',
-                            'Skilled: Choice 3':'',
-                            'Tavern Brawler':'',
-                            'Weapon Master':'',
-                            'Weapon Master: Choice 1':'',
-                            'Weapon Master: Choice 2':'',
-                            'Weapon Master: Choice 3':'',
-                            'Weapon Master: Choice 4':''}
-        self.position = position
+        self.xposition = 'PUT QUERY TO ACCESS FEATS DATA'
+        self.yposition = 'PUT QUERY TO ACCESS FEATS DATA'
 
     def attack(self,enemy):
         pass
@@ -450,206 +136,17 @@ class Character:
     def disengage(self):
         pass
     
-    def str_saving_throw(self):
-        pass
+    def gain_feat(self,feat):
+        # runs query to update feat table for selected feat
+        self.feats += feat
 
-    def dex_saving_throw(self):
-        pass
-
-    def int_saving_throw(self):
-        pass
-
-    def wis_saving_throw(self):
-        pass
-
-    def con_saving_throw(self):
-        pass
-
-    def chr_saving_throw(self):
-        pass        
-
-    def gainfeat_actor(self):
-        self.feat['Actor'] = True
-
-    def gainfeat_athlete(self,choice):
-        self.feat['Athlete'] = True
-        if choice.upper() == 'DEX':
-            self.stats['DEX'] = self.stats['DEX'] + 1
-            self.featchoices['Athlete'] = 'DEX'
-        elif choice.upper() == 'STR':
-            self.stats['STR'] = self.stats['STR'] + 1
-            self.featchoices['Athlete'] = 'STR'
-
-    def gainfeat_alert(self):
-        self.feat['Alert'] = True
-
-    def gainfeat_charger(self):
-        self.feat['Charger'] = True
-
-    def gainfeat_crossbowexpert(self):
-        self.feat["Crossbow Expert"] = True
-
-    def gainfeat_defensiveduelist(self):
-        self.feat['Defensive Duelist'] = True
-
-    def gainfeat_dualwielder(self):
-        self.feat['Dual Wielder'] = True
-
-    def gainfeat_dungeondelver(self):
-        self.feat['Dungeon Delver'] = True
-
-    def gainfeat_durable(self):
-        self.feat['Durable'] = True
-
-    def gainfeat_elementaladept(self,choice):
-        self.feat['Elemental Adept'] = True
-        self.featchoices['Elemental Adept'] = choice.lower()
-
-    def gainfeat_grappler(self):
-        self.feat['Grappler'] = True
-
-    def gainfeat_greatweaponmaster(self):
-        self.feat['Great Weapon Master'] = True
-
-    def gainfeat_healer(self):
-        self.feat['Healer'] = True
-
-    def gainfeat_heavilyarmored(self):
-        self.feat['Heavily Armored'] = True
-
-    def gainfeat_heavyarmormaster(self):
-        self.feat['Heavy Armor Master'] = True
-
-    def gainfeat_inspiringleader(self):
-        self.feat['Inspiring Leader'] = True
-
-    def gainfeat_keenmind(self):
-        self.feat['Keen Mind'] = True
-
-    def gainfeat_lightlyarmored(self,choice):
-        self.feat['Lightly Armored'] = True
-        if choice.upper() == 'DEX':
-            self.stats['DEX'] = self.stats['DEX'] + 1
-            self.featchoices['Lightly Armored'] = 'DEX'
-        elif choice.upper() == 'STR':
-            self.stats['STR'] = self.stats['STR'] + 1
-            self.featchoices['Lightly Armored'] = 'STR'
-
-    def gainfeat_linguist(self):
-        self.feat['Linguist'] = True
-
-    def gainfeat_lucky(self):
-        self.feat['Lucky'] = True
-
-    def gainfeat_mageslayer(self):
-        self.feat['Mage Slayer'] = True
-
-    def gainfeat_magicinitiate(self,choice):
-        self.feat['Magic Initiate'] = True
-        if choice.lower() == 'cleric':
-            self.featchoices['Magic Initiate'] = choice.lower()
-        elif choice.lower() == 'bard':
-            self.featchoices['Magic Initiate'] = choice.lower()
-        elif choice.lower() == 'wizard':
-            self.featchoices['Magic Initiate'] = choice.lower()
-        elif choice.lower() == 'sorcerer':
-            self.featchoices['Magic Initiate'] = choice.lower()
-        elif choice.lower() == 'warlock':
-            self.featchoices['Magic Initiate'] = choice.lower()
-        elif choice.lower() == 'druid':
-            self.featchoices['Magic Initiate'] = choice.lower()
-
-    def gainfeat_martialadept(self):
-        self.feat['Martial Adept'] = True
-
-    def gainfeat_mediumarmormaster(self):
-        self.feat['Medium Armor Master'] = True
-
-    def gainfeat_mobile(self):
-        self.feat['Mobile'] = True
-
-    def gainfeat_moderatelyarmored(self,choice):
-        self.feat['Moderately Armored'] = True
-        if choice.upper() == 'DEX':
-            self.stats['DEX'] = self.stats['DEX'] + 1
-            self.featchoices['Moderately Armored'] = 'DEX'
-        elif choice.upper() == 'STR':
-            self.stats['STR'] = self.stats['STR'] + 1
-            self.featchoices['Moderately Armored'] = 'STR'
-
-    def gainfeat_mountedcombatant(self):
-        self.feat['Mounted Combatant'] = True
-
-    def gainfeat_observant(self,choice):
-        self.feat['Observant'] = True
-        if choice.upper() == 'INT':
-            self.stats['INT'] = self.stats['INT'] + 1
-            self.featchoices['Observant'] = 'INT'
-        elif choice.upper() == 'WIS':
-            self.stats['WIS'] = self.stats['WIS'] + 1
-            self.featchoices['Observant'] = 'WIS'
-
-    def gainfeat_polearmmaster(self):
-        self.feat['Polearm Master'] = True
-
-    def gainfeat_resilient(self,choice):
-        self.feat['Resilient'] = True
-        self.featchoices['Resilient'] = choice.lower()
-
-    def gainfeat_ritualcaster(self):
-        self.feat['Ritual Caster'] = True
-
-    def gainfeat_savageattacker(self):
-        self.feat['Savage Attacker'] = True
-
-    def gainfeat_sentinel(self):
-        self.feat['Sentinel'] = True
-
-    def gainfeat_sharpshooter(self):
-        self.feat['Sharpshooter'] = True
-
-    def gainfeat_shieldmaster(self):
-        self.feat['Shield Master'] = True
-
-    def gainfeat_skilled(self,choice1,choice2,choice3):
-        self.feat['Skilled'] = True
-        self.featchoices['Skilled: Choice 1'] = choice1.lower()
-        self.featchoices['Skilled: Choice 2'] = choice2.lower()
-        self.featchoices['Skilled: Choice 3'] = choice3.lower()
-
-    def gainfeat_skulker(self):
-        self.feat['Skulker'] = True
-
-    def gainfeat_spellsniper(self):
-        self.feat['Spell Sniper'] = True
+    def saving_throw(self,checked_stat,required_roll):
+        #check = self.{checked_stat} - required_roll
+        if check >= 0:
+            return True
+        else:
+            return False
     
-    def gainfeat_tavernbrawler(self,choice):
-        self.feat['Tavern Brawler'] = True
-        if choice.upper() == 'DEX':
-            self.stats['DEX'] = self.stats['DEX'] + 1
-            self.featchoices['Tavern Brawler'] = 'DEX'
-        elif choice.upper() == 'STR':
-            self.stats['STR'] = self.stats['STR'] + 1
-            self.featchoices['Tavern Brawler'] = 'STR'    
-
-    def gainfeat_tough(self):
-        self.feat['Tough'] = True
-
-    def gainfeat_warcaster(self):
-        self.feat['War Caster'] = True
-
-    def gainfeat_weaponmaster(self,choice,weapon1,weapon2,weapon3,weapon4):
-        self.feat['Weapon Master'] = True
-        if choice.upper() == 'DEX':
-            self.stats['DEX'] = self.stats['DEX'] + 1
-            self.featchoices['Weapon Master'] = 'DEX'
-        elif choice.upper() == 'STR':
-            self.stats['STR'] = self.stats['STR'] + 1
-            self.featchoices['Weapon Master'] = 'STR' 
-        self.featchoices['Weapon Master: Choice 1'] = weapon1.lower()
-        self.featchoices['Weapon Master: Choice 2'] = weapon2.lower()
-        self.featchoices['Weapon Master: Choice 3'] = weapon3.lower()
-        self.featchoices['Weapon Master: Choice 4'] = weapon4.lower()
 
     def set_age(self,age=0):
         self.age = age
@@ -1130,42 +627,43 @@ class Wizard:
         self.bonuspickcount = 2
         self.bonusproficiencyoptions = ['Arcana','History','Insight','Investigation','Medicine','Religion']
 
+class Item:
+    def __init__(self,type,name,qty,weight):
+        self.item_type = type
+        self.name = name
+        self.quantity = qty
+        self.weight = weight
+
 
 class Weapon:
     #DMGTYPES = ['Bludgeoning','Slashing','Piercing']
-    def __init__(self,name,dmgtype,bonus=None,qty=1,size=4,weight=0) -> None:
-        self.name = name
+    def __init__(self,dmgtype,bonus=None,qty=1,size=4) -> None:
         self.dmgtype = dmgtype
         self.bonus = bonus
         self.damage = {'Quantity':qty,
                        'Size':size}  
-        self.weight = weight
 
 class Armor:
     #ARMORTYPES = ['Clothing','Light','Medium','Heavy']
-    def __init__(self,armortype,position,ac=10,bonus=None,weight=0) -> None:
+    def __init__(self,armortype,position,ac=10,bonus=None) -> None:
         self.ac = ac
         self.armortype = armortype
         self.position = position
         self.bonus = bonus
-        self.weight = weight
 
 class Consumable:
-    def __init__(self,name,stacksize=99,stat='',amount=0,status='',weight=0) -> None:
-        self.name = name
+    def __init__(self,stacksize=99,stat='',amount=0,status='') -> None:
         self.stacksize = stacksize
         self.effect = {'Stat':stat,
                        'Increase':amount}
         self.status = status
-        self.weight = weight
 
 class OffHand:
-    def __init__(self,ac=0,bonus='',stat='',amount=0,weight=0) -> None:
+    def __init__(self,ac=0,bonus='',stat='',amount=0) -> None:
         self.ac = ac
         self.bonus = bonus
         self.effect = {'Stat':stat,
                        'Increase':amount}
-        self.weight = weight
 
 class Event:
     def __init__(self,reward=[]):
