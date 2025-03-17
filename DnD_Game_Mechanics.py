@@ -2,29 +2,11 @@ import pymysql
 import json
 import random
 
-Database = pymysql.connect(
-    host='localhost',
-    user='root',
-    password='Goddess0!',
-    database='dndgame'
-)
+db_config = {"host":"localhost","user":"root","password":"Goddess0!","database":"dndgame","charset":"utf8mb4","cursorclass":pymysql.cursors.DictCursor}
+connection = pymysql.connect(**db_config)
 #To pull something from db, call Database.cursor(), this is like an instance of the DB and then <cursor>.execute('<SQL QUERY>')
 #To close the connection to the db, call Database.close(), this ends the transaction
-
-
-class Dice:
-    def __init__(self,qty,size=4) -> None:
-        self.qty = qty
-        self.size = size
-
-    def roll(self):
-        value = 0
-        for die in range(1,self.qty+1):
-            value += random.randint(1,self.size)
-        #     print(value)
-        # print(value)
-        return value
-    
+  
 class Character: #(Database):
     INITIAL_STAT_POINTS = 27
     POSSIBLE_FEATS = {
