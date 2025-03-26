@@ -38,5 +38,3 @@ class Combat:
     def opportunity_attack(self,attacker,target):
         if target.position <= attacker.position + 3:
             attacker.actions['attack']
-
-    
