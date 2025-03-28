@@ -2,6 +2,9 @@
 """
 Open world RPG with dungeons, complex stories, and turn-based combat. Challenging side quests, special bosses, and other hidden secrets.
 
+graphics idea:
+3D-isometric view (similar to diablo 2 style of view)
+
 map:
 Large open world map with many unique dungeons.
 Dungeons will either be a preset quest dungeon or a randomly generated dungeon based on the area (desert biome spawns cave or desert dungeon no an ice based dungeon)
