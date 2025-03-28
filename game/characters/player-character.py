@@ -2,10 +2,10 @@ import pymysql
 import json
 import random
 
-db_config = {"host":"localhost","user":"root","password":"Goddess0!","database":"dndgame","charset":"utf8mb4","cursorclass":pymysql.cursors.DictCursor}
-connection = pymysql.connect(**db_config)
-#To pull something from db, call Database.cursor(), this is like an instance of the DB and then <cursor>.execute('<SQL QUERY>')
-#To close the connection to the db, call Database.close(), this ends the transaction
+# db_config = {"host":"localhost","user":"root","password":"Goddess0!","database":"dndgame","charset":"utf8mb4","cursorclass":pymysql.cursors.DictCursor}
+# connection = pymysql.connect(**db_config)
+# #To pull something from db, call Database.cursor(), this is like an instance of the DB and then <cursor>.execute('<SQL QUERY>')
+# #To close the connection to the db, call Database.close(), this ends the transaction
   
 class Character: #(Database):
     INITIAL_STAT_POINTS = 27

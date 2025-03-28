@@ -1,14 +1,21 @@
 # fantasygame
 """
-Turn based rpg game with story progression, challenging side quests, and hidden secrets
+Open world RPG with dungeons, complex stories, and turn-based combat. Challenging side quests, special bosses, and other hidden secrets.
 
-Party system:
-5 hero slots
+map:
+Large open world map with many unique dungeons.
+Dungeons will either be a preset quest dungeon or a randomly generated dungeon based on the area (desert biome spawns cave or desert dungeon no an ice based dungeon)
+Large cities will be available for exploration.
+All area will be available for exploration after a few introductory quests. 
+Biomes planned: city, swamp, plains, mountains, desert, tundra, jungle, volcanic, beach, rivers, oceans, islands(tropical and arctic), and some specialty realms.
+
+party system:
+5 hero slots - Allows for upto 5 players simultaneous or 1 player playing upto 5 heros.
 Low man mode: per each fewer party member on purpose (doesn't account for yet to be unlocked slots and dead characters) you get a bonus to stats
 unique hero classes, looks, and skill trees
 prebuilt npc allies avialable
-build your own team
-max party size is 10 people
+build your own team (team can consist of upto 10 characters but only 5 active at one time)
+max party size is 5 people
 
 battle system:
 battle size is max size of 5 at a time, but enemy count is not limited, as enemy dies next will come on
@@ -17,7 +24,7 @@ there are items, attack, abilities, and specials
 some battles will have special events or triggers that must be done to change the fight into its next stage
 
 leveling system:
-xp based leveling, combats earn xp
+xp based leveling: combat, events, discovery, learning new recipes, and special xp consumables.
 each character template has base stats that get updated per level (not always the same stat every level)
 preset templates provide base skills and abilities but additional skills and abilities will be based on level unlocks and then players choices
 certain items will have level requirements attached
