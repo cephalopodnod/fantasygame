@@ -1,40 +1,34 @@
 class GameState:
+    from game.characters.player_character import Character
     def __init__(self):
         # Player data
         self.players = {}
         self.active_player_id = None
-        
-        # Enemy data
         self.enemies = {}
-        
-        # Map data
         self.map = {
             'width': 100,
             'height': 100,
             'tiles': {},  # Could use coordinates as keys (x,y) and tile data as values
             'spawn_points': []
         }
-        
-        # Game status
         self.is_running = False
         self.game_time = 0
         self.difficulty = 'normal'
-        
-        # Inventory/Items
         self.global_items = {}  # Items on the map
         
-    # Player management methods
-    def add_player(self, player_id, name, position=(0,0), health=100):
-        self.players[player_id] = {
-            'name': name,
-            'position': position,
-            'health': health,
-            'max_health': 100,
-            'inventory': [],
-            'score': 0
-        }
-        if not self.active_player_id:
-            self.active_player_id = player_id
+    def create_character(self):
+        char = Character()
+        char.name = input("Enter character name: ")
+        char.set_race()
+        char.set_alignment()
+        char.set_class()
+        char.set_stats()
+        char.set_traits()
+        self.players[char.name] = char
+
+    def add_character(self, character):
+        self.players[character.name] = character
+
             
     def update_player_position(self, player_id, new_position):
         if player_id in self.players:
@@ -94,6 +88,20 @@ class GameState:
             player_id in self.players):
             self.global_items[item_id]['is_picked_up'] = True
             self.players[player_id]['inventory'].append(item_id)
+
+    def take_turn(self):
+        for character in self.fightorder:
+            if self.fightorder[character] == self.currentturn:
+                #character can do 1 action(cast spell, use skill, standard action) and do 1 bonus action, there are skills that allow you to do multiple actions or bonus actions.
+                print(f"{character} can take their turn")
+        self.currentturn += 1
+        pass
+
+    def end_turn(self,character):
+        if self.currentturn != self.fightsize:
+            self.currentturn += 1
+        else:
+            self.currentturn = 1
 
 # Example usage:
 if __name__ == "__main__":

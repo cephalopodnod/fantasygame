@@ -1,13 +1,4 @@
-import pymysql
-import json
-import random
-
-# db_config = {"host":"localhost","user":"root","password":"Goddess0!","database":"dndgame","charset":"utf8mb4","cursorclass":pymysql.cursors.DictCursor}
-# connection = pymysql.connect(**db_config)
-# #To pull something from db, call Database.cursor(), this is like an instance of the DB and then <cursor>.execute('<SQL QUERY>')
-# #To close the connection to the db, call Database.close(), this ends the transaction
-  
-class Character: #(Database):
+class Character: 
     INITIAL_STAT_POINTS = 27
     POSSIBLE_FEATS = {
     "Actor": "Gain +1 to Charisma. Advantage on Deception and Performance checks when trying to pass as a different person. Can mimic voices after hearing them.",
@@ -54,7 +45,8 @@ class Character: #(Database):
     "Weapon Master": "Gain proficiency with four weapons of your choice and +1 to Strength or Dexterity."}
     POSSIBLE_CLASSES = classes = ["Barbarian","Bard","Cleric","Druid","Fighter","Monk","Paladin","Ranger","Rogue","Sorcerer","Warlock","Wizard"]
     
-    def __init__(self,position) -> None:
+    def __init__(self) -> None:
+        self.name = ''
         self.race = ''
         self.subrace = ''
         self.spec = ''
