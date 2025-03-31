@@ -97,7 +97,6 @@ class GameState:
 
 # Example usage:
 if __name__ == "__main__":
-    # Create a new game state
     game = GameState()
     
     # Add a player
