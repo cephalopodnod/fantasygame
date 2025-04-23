@@ -24,37 +24,69 @@ class GameState:
         self.game_time = 0
         self.difficulty = 'normal'
         self.global_items = {} 
-        self.bus = BusManager()
+        self.game_state = 'main_screen'
+        self.gameplay_bus = BusManager()
+        self.menu_bus = BusManager()
 
-    def input_handler(self, key, player_position, interactive_object=None):
+    def menu_handler(self, key):
+        if key == "W":
+            self.gameplay_bus.publish('menu_navigation', {"action": "up"})
+        elif key == "A":
+            self.gameplay_bus.publish('menu_navigation', {"action": "left"})
+        elif key == "D":
+            self.gameplay_bus.publish('menu_navigation', {"action": "right"})
+        elif key == "S":
+            self.gameplay_bus.publish('menu_navigation', {"action": "down"})
+        elif key == "Enter":
+            self.gameplay_bus.publish('menu_selection', {"action": "select"})
+        elif key == "Escape" or key == "Tab":
+            self.gameplay_bus.publish('menu_close', {"action": "close_menu"})
+
+    def menu_selection(self, data):
+        self.menu_bus.publish('menu_selection', {"action": data['action']})
+        print(f"Menu action: {data['action']}")
+
+    def menu_close(self, data):
+        self.game_state = 'in_game'
+        print(f"Menu closed: {data['action']}")
+    
+    def game_handler(self, key, player_position, interactive_object=None):
         if key in ['W', 'A', 'S', 'D']:
-            self.bus.publish('player_move', {"action": "move", "direction": key})
+            self.gameplay_bus.publish('player_move', {"action": "move", "direction": key})
         elif key == 'E':
-            self.bus.publish('player_interact', {"action": "interact", "position": player_position, "object": interactive_object})
+            self.gameplay_bus.publish('player_interact', {"action": "interact", "position": player_position, "object": interactive_object})
         elif key == 'Tab':
-            self.bus.publish('player_menu', {"action": "open_menu", "player_id": self.active_player_id})
+            self.gameplay_bus.publish('player_menu', {"action": "open_menu", "game_state": self.game_state})
         elif key == 'I':
-            self.bus.publish('player_inventory', {"action": "open_inventory", "player_id": self.active_player_id})
+            self.gameplay_bus.publish('player_inventory', {"action": "open_inventory", "player_id": self.active_player_id})
 
     def player_move(self,data):
         print(f"Player {data['player_id']} moved {data['direction']}")
+        if data['direction'] == 'W':
+            self.players[data['player_id']]['position'][1] -= 1
+        elif data['direction'] == 'A':
+            self.players[data['player_id']]['position'][0] -= 1
+        elif data['direction'] == 'S':
+            self.players[data['player_id']]['position'][1] += 1
+        elif data['direction'] == 'D':
+            self.players[data['player_id']]['position'][0] += 1
         
     def object_proximity(self,data):
         player_pos = data["player_position"]
         object_pos = data["interactive_object"]["position"]
         if data["action"] == "interact" and player_pos == object_pos:
-            self.bus.publish('object_interact', {"action": "interact", "object_id": data["object"]["id"]})
+            self.gameplay_bus.publish('object_interact', {"action": "interact", "object_id": data["object"]["id"]})
             print(f"Player {self.players[self.active_player_id]} interacted with object {data['object']['id']} at {data['object']['position']}")
     
     def player_interact(self,data): 
         if data['object']['type'] == 'chest':
-            self.bus.publish('chest_opened', {"action": "open_chest", "object_id": data["object"]["id"]})
+            self.gameplay_bus.publish('chest_opened', {"action": "open_chest", "object_id": data["object"]["id"]})
         elif data['object']['type'] == 'door':
-            self.bus.publish('door_opened', {"action": "open_door", "object_id": data["object"]["id"]})
+            self.gameplay_bus.publish('door_opened', {"action": "open_door", "object_id": data["object"]["id"]})
         elif data['object']['type'] == 'npc':
-            self.bus.publish('npc_interaction', {"action": "talk_to_npc", "object_id": data["object"]["id"]})
+            self.gameplay_bus.publish('npc_interaction', {"action": "talk_to_npc", "object_id": data["object"]["id"]})
         elif data['object']['type'] == 'item':
-            self.bus.publish('item_pickup', {"action": "pickup_item", "object_id": data["object"]["id"]})
+            self.gameplay_bus.publish('item_pickup', {"action": "pickup_item", "object_id": data["object"]["id"]})
 
     def open_chest(self, data):
         print(f"Player opened chest and these items were added to inventory: {', '.join(data['object']['loot']['name'])}")
@@ -68,6 +100,10 @@ class GameState:
     def pickup_item(self, data):
         print(f"Player picked up item: {data['object']['name']}")
         self.players[data['player_id']]['inventory'].append(data['object'])
+
+    def open_menu(self,data):
+        self.game_state = 'in_game_menu'
+        print(f"Player opened menu: {data['game_state']}")
   
 
 
