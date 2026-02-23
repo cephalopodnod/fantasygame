@@ -1,0 +1,7 @@
+{"Baton Smash":{"dmg_type":"bludgeon","dmg_dice":"1d6","elemental_type":None,"bonus_effect":None},
+"Pistol Whip":{"dmg_type":"bludgeon","dmg_dice":"1d10","elemental_type":None,"bonus_effect":None},
+"Pistol Shot":{"dmg_type":"pierce","dmg_dice":"2d10","elemental_type":None,"bonus_effect":None},
+"Shotgun Blast":{"dmg_type":"pierce","dmg_dice":"6d6","elemental_type":None,"bonus_effect":None},
+"Blinding Light":{"dmg_type":None,"dmg_dice":None,"elemental_type":None,"bonus_effect":"Blindness"}
+
+}
