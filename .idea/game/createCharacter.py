@@ -5,6 +5,7 @@ class Character():
         self.player_class = ''
         self.race = ''
         self.inventory = []
+        self.background = {}
 
     def add_inv(self,item,qty):
         self.inventory.append({"Name":item,"Qty":qty})
@@ -191,10 +192,107 @@ class Character():
              "Tool Proficiency":["Thieves' Tools"],
              "Equipment":["Thieves' Tools","2 Daggers","Gaming Set","Bedroll","2 Pouches","Traveler's Clothes","16 GP"]}
         ]
+        selection = input("What is your background: Acolyte, Artisan, Charlatan, Criminal, Entertainer, Farmer, Guard, Guide, Hermit, Merchant, Noble, Sage, Sailor, Scribe, Soldier, Wayfarer").lower()  
+        if selection == "acolyte" or selection == 1:
+            for select in BACKGROUNDS:
+                if select['Type'] == 'Acolyte':
+                    self.background = select
+                    self.inventory.append(select['Equipment'])
+        elif selection == "artisan" or selection == 2:
+            for select in BACKGROUNDS:
+                if select['Type'] == 'Artisan':
+                    self.background = select
+                    self.inventory.append(select['Equipment'])
+        elif selection == "charlatan" or selection == 3:
+            for select in BACKGROUNDS:
+                if select['Type'] == 'Charlatan':
+                    self.background = select
+                    self.inventory.append(select['Equipment'])
+        elif selection == "criminal" or selection == 4:
+            for select in BACKGROUNDS:
+                if select['Type'] == 'Criminal':
+                    self.background = select
+                    self.inventory.append(select['Equipment'])
+        elif selection == "entertainer" or selection == 5:
+            for select in BACKGROUNDS:
+                if select['Type'] == 'Entertainer':
+                    self.background = select
+                    self.inventory.append(select['Equipment'])
+        elif selection == "farmer" or selection == 6:
+            for select in BACKGROUNDS:
+                if select['Type'] == 'Farmer':
+                    self.background = select
+                    self.inventory.append(select['Equipment'])
+        elif selection == "guard" or selection == 7:
+            for select in BACKGROUNDS:
+                if select['Type'] == 'Guard':
+                    self.background = select
+                    self.inventory.append(select['Equipment'])
+        elif selection == "guide" or selection == 8:
+            for select in BACKGROUNDS:
+                if select['Type'] == 'Guide':
+                    self.background = select
+                    self.inventory.append(select['Equipment'])
+        elif selection == "hermit" or selection == 9:
+            for select in BACKGROUNDS:
+                if select['Type'] == 'Hermit':
+                    self.background = select
+                    self.inventory.append(select['Equipment'])
+        elif selection == "merchant" or selection == 10:
+            for select in BACKGROUNDS:
+                if select['Type'] == 'Merchant':
+                    self.background = select
+                    self.inventory.append(select['Equipment'])
+        elif selection == "noble" or selection == 11:
+            for select in BACKGROUNDS:
+                if select['Type'] == 'Noble':
+                    self.background = select
+                    self.inventory.append(select['Equipment'])
+        elif selection == "sage" or selection == 12:
+            for select in BACKGROUNDS:
+                if select['Type'] == 'Sage':
+                    self.background = select
+                    self.inventory.append(select['Equipment'])
+        elif selection == "sailor" or selection == 13:
+            for select in BACKGROUNDS:
+                if select['Type'] == 'Sailor':
+                    self.background = select
+                    self.inventory.append(select['Equipment'])
+        elif selection == "scribe" or selection == 14:
+            for select in BACKGROUNDS:
+                if select['Type'] == 'Scribe':
+                    self.background = select
+                    self.inventory.append(select['Equipment'])
+        elif selection == "soldier" or selection == 15:
+            for select in BACKGROUNDS:
+                if select['Type'] == 'Soldier':
+                    self.background = select
+                    self.inventory.append(select['Equipment'])
+        elif selection == "wayfarer" or selection == 16:
+            for select in BACKGROUNDS:
+                if select['Type'] == 'Wayfarer':
+                    self.background = select
+                    self.inventory.append(select['Equipment'])
+        else:
+            print("No option was selected, try again!")
+            self.set_background()
 
-    # def setup(self):
-    #     self.set_race()
-    #     self.set_background()
+    def set_class(self):
+        mainclass = input("What class are you: Barbarian, Bard, Cleric, Druid, Fighter, Monk, Paladin, Ranger, Rogue, Sorcerer, Warlock, Wizard").lower()
+        if mainclass == 'barbarian' or mainclass == 1:
+        elif mainclass == 'barbarian' or mainclass == 2:
+        elif mainclass == 'barbarian' or mainclass == 3:
+        elif mainclass == 'barbarian' or mainclass == 4:
+        elif mainclass == 'barbarian' or mainclass == 5:
+        elif mainclass == 'barbarian' or mainclass == 6:
+        elif mainclass == 'barbarian' or mainclass == 7:
+        elif mainclass == 'barbarian' or mainclass == 8:
+        elif mainclass == 'barbarian' or mainclass == 9:
+        elif mainclass == 'barbarian' or mainclass == 10:
+        elif mainclass == 'barbarian' or mainclass == 11:
+        elif mainclass == 'barbarian' or mainclass == 12:
+        else:
+            pass
 
 Tim = Character('Tim')
 # print(Tim.name)
@@ -204,5 +302,6 @@ Tim = Character('Tim')
 # print(Tim.inventory)
 # Tim.sub_inv('Gold',1)
 # print(Tim.inventory)
-Tim.set_race()
-print(Tim.race)
+Tim.set_background()
+print(Tim.background)
+print(Tim.inventory)
