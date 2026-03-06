@@ -1,11 +1,21 @@
 #createCharacter.py
 class Character():
+    SKILLS_LIST = ['Acrobatics','Animal Handling','Arcana','Athletics','Deception','History','Insight','Intimidation','Investigation','Medicine','Nature','Perception','Performance','Persuasion','Religion','Sleight of Hand','Stealth','Survival']
     def __init__(self,name):
         self.name = name
         self.player_class = ''
+        self.sub_class = ''
         self.race = ''
         self.inventory = []
         self.background = {}
+        self.primary_stat = ''
+        self.hpdie = 0
+        self.saving_throws = []
+        self.weapon_prof = []
+        self.armor_train = []
+        self.traits = []
+        self.skills = []
+        
 
     def add_inv(self,item,qty):
         self.inventory.append({"Name":item,"Qty":qty})
@@ -280,17 +290,110 @@ class Character():
     def set_class(self):
         mainclass = input("What class are you: Barbarian, Bard, Cleric, Druid, Fighter, Monk, Paladin, Ranger, Rogue, Sorcerer, Warlock, Wizard").lower()
         if mainclass == 'barbarian' or mainclass == 1:
-        elif mainclass == 'barbarian' or mainclass == 2:
-        elif mainclass == 'barbarian' or mainclass == 3:
-        elif mainclass == 'barbarian' or mainclass == 4:
-        elif mainclass == 'barbarian' or mainclass == 5:
-        elif mainclass == 'barbarian' or mainclass == 6:
-        elif mainclass == 'barbarian' or mainclass == 7:
-        elif mainclass == 'barbarian' or mainclass == 8:
-        elif mainclass == 'barbarian' or mainclass == 9:
-        elif mainclass == 'barbarian' or mainclass == 10:
-        elif mainclass == 'barbarian' or mainclass == 11:
-        elif mainclass == 'barbarian' or mainclass == 12:
+            self.player_class = 'Barbarian'
+            self.armor_train.append('Light')
+            self.armor_train.append('Medium')
+            self.armor_train.append('Shield')
+            self.weapon_prof.append('Simple')
+            self.weapon_prof.append('Martial')
+            self.hpdie = 12
+            self.primary_stat = 'STR'
+            self.saving_throws.append('STR')
+            self.saving_throws.append('CON')
+            options = ['Animal Handling','Athletics','Intimidation','Nature','Perception','Survival']
+            firstselect = input(f'Select one from {options}.')
+            self.skills.append(firstselect)
+            if firstselect != '':
+                options.remove(firstselect)
+            secondselect = input(f'Select your second skill from {options}')
+            self.skills.append(secondselect)
+        elif mainclass == 'bard' or mainclass == 2:
+            self.player_class = 'Bard'
+            self.armor_train.append('Light')
+            self.hpdie = 8
+            self.primary_stat = 'CHR'
+            self.saving_throws.append('DEX')
+            self.saving_throws.append('CHR')
+        elif mainclass == 'cleric' or mainclass == 3:
+            self.player_class = 'Cleric'
+            self.armor_train.append('Simple')
+            self.armor_train.append('Martial')
+            self.hpdie = 12
+            self.primary_stat = 'STR'
+            self.saving_throws.append('STR')
+            self.saving_throws.append('CON')
+        elif mainclass == 'druid' or mainclass == 4:
+            self.player_class = 'Druid'
+            self.armor_train.append('Simple')
+            self.armor_train.append('Martial')
+            self.hpdie = 12
+            self.primary_stat = 'STR'
+            self.saving_throws.append('STR')
+            self.saving_throws.append('CON')
+        elif mainclass == 'fighter' or mainclass == 5:
+            self.player_class = 'Fighter'
+            self.armor_train.append('Simple')
+            self.armor_train.append('Martial')
+            self.hpdie = 12
+            self.primary_stat = 'STR'
+            self.saving_throws.append('STR')
+            self.saving_throws.append('CON')
+        elif mainclass == 'monk' or mainclass == 6:
+            self.player_class = 'Monk'
+            self.armor_train.append('Simple')
+            self.armor_train.append('Martial')
+            self.hpdie = 12
+            self.primary_stat = 'STR'
+            self.saving_throws.append('STR')
+            self.saving_throws.append('CON')
+        elif mainclass == 'paladin' or mainclass == 7:
+            self.player_class = 'Paladin'
+            self.armor_train.append('Simple')
+            self.armor_train.append('Martial')
+            self.hpdie = 12
+            self.primary_stat = 'STR'
+            self.saving_throws.append('STR')
+            self.saving_throws.append('CON')
+        elif mainclass == 'ranger' or mainclass == 8:
+            self.player_class = 'Ranger'
+            self.armor_train.append('Simple')
+            self.armor_train.append('Martial')
+            self.hpdie = 12
+            self.primary_stat = 'STR'
+            self.saving_throws.append('STR')
+            self.saving_throws.append('CON')
+        elif mainclass == 'rogue' or mainclass == 9:
+            self.player_class = 'Rogue'
+            self.armor_train.append('Simple')
+            self.armor_train.append('Martial')
+            self.hpdie = 12
+            self.primary_stat = 'STR'
+            self.saving_throws.append('STR')
+            self.saving_throws.append('CON')
+        elif mainclass == 'sorcerer' or mainclass == 10:
+            self.player_class = 'Sorcerer'
+            self.armor_train.append('Simple')
+            self.armor_train.append('Martial')
+            self.hpdie = 12
+            self.primary_stat = 'STR'
+            self.saving_throws.append('STR')
+            self.saving_throws.append('CON')
+        elif mainclass == 'warlock' or mainclass == 11:
+            self.player_class = 'Warlock'
+            self.armor_train.append('Simple')
+            self.armor_train.append('Martial')
+            self.hpdie = 12
+            self.primary_stat = 'STR'
+            self.saving_throws.append('STR')
+            self.saving_throws.append('CON')
+        elif mainclass == 'wizard' or mainclass == 12:
+            self.player_class = 'Wizard'
+            self.armor_train.append('Simple')
+            self.armor_train.append('Martial')
+            self.hpdie = 12
+            self.primary_stat = 'STR'
+            self.saving_throws.append('STR')
+            self.saving_throws.append('CON')
         else:
             pass
 
@@ -302,6 +405,5 @@ Tim = Character('Tim')
 # print(Tim.inventory)
 # Tim.sub_inv('Gold',1)
 # print(Tim.inventory)
-Tim.set_background()
-print(Tim.background)
-print(Tim.inventory)
+Tim.set_class()
+print(Tim.skills)
