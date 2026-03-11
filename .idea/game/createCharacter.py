@@ -2,21 +2,31 @@
 class Character():
     SKILLS_LIST = ['Acrobatics','Animal Handling','Arcana','Athletics','Deception','History','Insight','Intimidation','Investigation','Medicine','Nature','Perception','Performance','Persuasion','Religion','Sleight of Hand','Stealth','Survival']
     START_EQUIP = [{'Main Class':'Barbarian',
-                    'Inventory':['Greataxe','Handaxe','Handaxe','Handaxe','Handaxe',"Explorer's Pack",'15 GP']},
+                    'Inventory':[{"Name":"Greataxe","Qty":1},{"Name":"Handaxe","Qty":4},{"Name":"Explorer's Pack","Qty":1},{"Name":"GP","Qty":15}]},
                     {'Main Class':'Bard',
-                    'Inventory':['Leather Armor','Dagger','Dagger','Musical Instrument',"Entertainer's Pack",'19 GP']},
+                    'Inventory':[{"Name":"Leather Armor","Qty":1},{"Name":"Dagger","Qty":2},{"Name":"Musical Instrument","Qty":1},{"Name":"Entertainer's Pack","Qty":1},{"Name":"GP","Qty":19}]},
                     {'Main Class':'Cleric',
-                    'Inventory':['Greataxe','Handaxe','Handaxe','Handaxe','Handaxe',"Explorer's Pack",'15 GP']},
-                    {'Main Class':'Barbarian',
-                    'Inventory':['Greataxe','Handaxe','Handaxe','Handaxe','Handaxe',"Explorer's Pack",'15 GP']},
-                    {'Main Class':'Barbarian',
-                    'Inventory':['Greataxe','Handaxe','Handaxe','Handaxe','Handaxe',"Explorer's Pack",'15 GP']},
-                    {'Main Class':'Barbarian',
-                    'Inventory':['Greataxe','Handaxe','Handaxe','Handaxe','Handaxe',"Explorer's Pack",'15 GP']},
-                    {'Main Class':'Barbarian',
-                    'Inventory':['Greataxe','Handaxe','Handaxe','Handaxe','Handaxe',"Explorer's Pack",'15 GP']},
-                    {'Main Class':'Barbarian',
-                    'Inventory':['Greataxe','Handaxe','Handaxe','Handaxe','Handaxe',"Explorer's Pack",'15 GP']}, 
+                    'Inventory':[{"Name":"Chain Shirt","Qty":1},{"Name":"Shield","Qty":1},{"Name":"Mace","Qty":1},{"Name":"Holy Symbol","Qty":1},{"Name":"Priest's Pack","Qty":1},{"Name":"GP","Qty":7}]},
+                    {'Main Class':'Druid',
+                    'Inventory':[{"Name":"Leather Armor","Qty":1},{"Name":"Sickle","Qty":1},{"Name":"Shield","Qty":1},{"Name":"Druidic Focus (Quarterstaff)","Qty":1},{"Name":"Herbalism Kit","Qty":1},{"Name":"Explorer's Pack","Qty":1},{"Name":"GP","Qty":9}]},
+                    {'Main Class':'Fighter (STR)',
+                    'Inventory':[{"Name":"Greatsword","Qty":1},{"Name":"Chain Mail","Qty":1},{"Name":"Flail","Qty":1},{"Name":"Javelin","Qty":8},{"Name":"Dungoneer's Pack","Qty":1},{"Name":"GP","Qty":4}]},
+                    {'Main Class':'Fighter (DEX)',
+                    'Inventory':[{"Name":"Studded Leather Armor","Qty":1},{"Name":"Scimitar","Qty":1},{"Name":"Short Sword","Qty":1},{"Name":"Longbow","Qty":1},{"Name":"Arrows","Qty":20},{"Name":"Quiver","Qty":1},{"Name":"Dungeoneer's Pack","Qty":1},{"Name":"GP","Qty":11}]},
+                    {'Main Class':'Monk',
+                    'Inventory':[{"Name":"Spear","Qty":1},{"Name":"Dagger","Qty":5},{"Name":"Explorer's Pack","Qty":1},{"Name":"GP","Qty":11}]},
+                    {'Main Class':'Paladin',
+                    'Inventory':[{"Name":"Chain Mail","Qty":1},{"Name":"Shield","Qty":1},{"Name":"Longsword","Qty":1},{"Name":"Javelin","Qty":6},{"Name":"Holy Symbol","Qty":1},{"Name":"Priest's Pack","Qty":1},{"Name":"GP","Qty":9}]}, 
+                    {'Main Class':'Ranger',
+                    'Inventory':[{"Name":"Chain Mail","Qty":1},{"Name":"Shield","Qty":1},{"Name":"Longsword","Qty":1},{"Name":"Javelin","Qty":6},{"Name":"Holy Symbol","Qty":1},{"Name":"Priest's Pack","Qty":1},{"Name":"GP","Qty":9}]}, 
+                    {'Main Class':'Rogue',
+                    'Inventory':[{"Name":"Leather Armor","Qty":1},{"Name":"Dagger","Qty":2},{"Name":"Thieves' Tools","Qty":1},{"Name":"Explorer's Pack","Qty":1},{"Name":"GP","Qty":19}]}, 
+                    {'Main Class':'Sorcerer',
+                    'Inventory':[{"Name":"Chain Mail","Qty":1},{"Name":"Shield","Qty":1},{"Name":"Longsword","Qty":1},{"Name":"Javelin","Qty":6},{"Name":"Holy Symbol","Qty":1},{"Name":"Priest's Pack","Qty":1},{"Name":"GP","Qty":9}]}, 
+                    {'Main Class':'Warlock',
+                    'Inventory':[{"Name":"Chain Mail","Qty":1},{"Name":"Shield","Qty":1},{"Name":"Longsword","Qty":1},{"Name":"Javelin","Qty":6},{"Name":"Holy Symbol","Qty":1},{"Name":"Priest's Pack","Qty":1},{"Name":"GP","Qty":9}]}, 
+                    {'Main Class':'Wizard',
+                    'Inventory':[{"Name":"Chain Mail","Qty":1},{"Name":"Shield","Qty":1},{"Name":"Longsword","Qty":1},{"Name":"Javelin","Qty":6},{"Name":"Holy Symbol","Qty":1},{"Name":"Priest's Pack","Qty":1},{"Name":"GP","Qty":9}]}, 
                     ]
     def __init__(self,name):
         self.name = name
@@ -331,11 +341,12 @@ class Character():
 
     def set_class(self):
         mainclass = input("What class are you: Barbarian, Bard, Cleric, Druid, Fighter, Monk, Paladin, Ranger, Rogue, Sorcerer, Warlock, Wizard").lower()
-        if mainclass == 'barbarian' or mainclass == 1:
-            self.player_class = 'Barbarian'
+        mainclass = self.caps_first_letter(mainclass)
+        self.player_class = mainclass
+        if mainclass == 'Barbarian':
             self.armor_train.append('Light')
             self.armor_train.append('Medium')
-            self.armor_train.append('Shield')
+            self.armor_train.append('Shields')
             self.weapon_prof.append('Simple')
             self.weapon_prof.append('Martial')
             self.hpdie = 12
@@ -349,8 +360,7 @@ class Character():
                 options.remove(firstselect)
             secondselect = input(f'Select your second skill from {options}')
             self.skills.append(secondselect)
-        elif mainclass == 'bard' or mainclass == 2:
-            self.player_class = 'Bard'
+        elif mainclass == 'Bard':
             self.armor_train.append('Light')
             self.weapon_prof.append('Simple')
             self.tool_prof.append('Instruments')
@@ -359,8 +369,7 @@ class Character():
             self.saving_throws.append('DEX')
             self.saving_throws.append('CHR')
             instrument = input('Which instrument do you want to start with: Bagpipes, Drum, Dulcimer, Flute, Horn, Lute, Lyre, Pan flute, Shawm, or Viol? ').lower()
-            if instrument != '':
-                self.inventory.append(instrument)
+            self.inventory.append(instrument)
             skills_to_learn = []
             skillscopy = self.SKILLS_LIST
             while len(skills_to_learn) < 3:
@@ -369,82 +378,128 @@ class Character():
                 skillscopy.remove(addskill)
             for each in skills_to_learn:
                 self.skills.append(each)
-
-
-        elif mainclass == 'cleric' or mainclass == 3:
-            self.player_class = 'Cleric'
+        elif mainclass == 'Cleric':
+            self.armor_train.append('Light')
+            self.armor_train.append('Medium')
+            self.armor_train.append('Shields')
+            self.weapon_prof.append('Simple')
+            self.hpdie = 8
+            self.primary_stat = 'WIS'
+            self.saving_throws.append('WIS')
+            self.saving_throws.append('CHR')
+            options = ['History','Insight','Medicine','Persuasion','Religion']
+            firstselect = input(f'Select one from {options}.')
+            self.skills.append(firstselect)
+            options.remove(firstselect)
+            secondselect = input(f'Select your second skill from {options}')
+            self.skills.append(secondselect)
+        elif mainclass == 'Druid':
+            self.armor_train.append('Light')
+            self.armor_train.append('Shields')
+            self.weapon_prof.append('Simple')
+            self.tool_prof.append('Herbalism Kit')
+            self.hpdie = 8
+            self.primary_stat = 'WIS'
+            self.saving_throws.append('WIS')
+            self.saving_throws.append('INT')
+            options = ['Arcana','Animal Handling','Insight','Medicine','Nature','Perception','Religion','Survival']
+            firstselect = input(f'Select one from {options}.')
+            self.skills.append(firstselect)
+            options.remove(firstselect)
+            secondselect = input(f'Select your second skill from {options}')
+            self.skills.append(secondselect)
+        elif mainclass == 'Fighter':
+            self.weapon_prof.append('Simple')
+            self.weapon_prof.append('Martial')
+            self.armor_train.append('Light')
+            self.armor_train.append('Medium')
+            self.armor_train.append('Heavy')
+            self.armor_train.append('Shields')
+            self.hpdie = 10
+            self.saving_throws.append('STR')
+            self.saving_throws.append('CON')
+            pick = input('Do you want to be a strength or dexterity based fighter? ').lower()
+            if pick == 'strength':
+                self.primary_stat = 'STR'
+            elif pick == 'dexterity':
+                self.primary_stat = 'DEX'
+        elif mainclass == 'Monk':
+            self.weapon_prof.append('Simple')
+            self.weapon_prof.append('Martial')
+            self.armor_train.append('None')
+            self.hpdie = 8
+            self.primary_stat = 'DEX WIS'
+            self.saving_throws.append('STR')
+            self.saving_throws.append('DEX')
+            options = ['Acrobatics','Athletics','History','Insight','Religion','Stealth']
+            firstselect = input(f'Select one from {options}.')
+            self.skills.append(firstselect)
+            options.remove(firstselect)
+            secondselect = input(f'Select your second skill from {options}')
+            self.skills.append(secondselect)
+            tools = ["Alchemist's Supplies", "Calligrapher's Supplies", "Carpenter's Tools", "Cartographer's Tools", "Cobblers Tools", "Cook's Utensils", "Glassblower's Tools", "Jeweler's Tools", "Leatherworker's Tools", "Mason's Tools", "Painter's Supplies", "Potter's Tools", "Smith's Tools", "Tinker's Tools", "Weaver's Tools", "Woodcarver's Tools","Bagpipes", "Drum", "Dulcimer", "Flute", "Horn", "Lute", "Lyre", "Pan flute", "Shawm", "Viol"]
+            toolselect = input(f'Select one tool proficiency from {tools}.')
+            toolselect = self.caps_first_letter(toolselect)
+            self.tool_prof.append(toolselect)
+            self.inventory.append({"Name":toolselect,"Qty":1})
+        elif mainclass == 'Paladin':
+            self.armor_train.append('Light')
+            self.armor_train.append('Medium')
+            self.armor_train.append('Heavy')
+            self.armor_train.append('Shields')
+            self.weapon_prof.append('Simple')
+            self.weapon_prof.append('Martial')
+            self.hpdie = 10
+            self.primary_stat = 'STR CHR'
+            self.saving_throws.append('WIS')
+            self.saving_throws.append('CHR')
+            options = ['Athletics','Insight','Intimidation','Medicine','Persuasion','Religion']
+            firstselect = input(f'Select one from {options}.')
+            self.skills.append(firstselect)
+            options.remove(firstselect)
+            secondselect = input(f'Select your second skill from {options}')
+            self.skills.append(secondselect)
+        elif mainclass == 'Ranger':
+            self.armor_train.append('Light')
+            self.armor_train.append('Medium')
+            self.armor_train.append('Shields')
+            self.weapon_prof.append('Simple')  
+            self.weapon_prof.append('Martial')
+            self.hpdie = 10
+            self.primary_stat = 'DEX WIS'
+            self.saving_throws.append('STR')
+            self.saving_throws.append('DEX')
+            options = ['Animal Handling','Athletics','Insight','Investigation','Nature','Perception','Stealth','Survival']
+            firstselect = input(f'Select one from {options}.')
+            self.skills.append(firstselect)
+            options.remove(firstselect)
+            secondselect = input(f'Select your second skill from {options}')
+            self.skills.append(secondselect)
+            options.remove(secondselect)
+            thirdselect = input(f'Select your third skill from {options}')
+            self.skills.append(thirdselect)
+        elif mainclass == 'Rogue':
             self.armor_train.append('Simple')
             self.armor_train.append('Martial')
             self.hpdie = 12
             self.primary_stat = 'STR'
             self.saving_throws.append('STR')
             self.saving_throws.append('CON')
-        elif mainclass == 'druid' or mainclass == 4:
-            self.player_class = 'Druid'
+        elif mainclass == 'Sorcerer':
             self.armor_train.append('Simple')
             self.armor_train.append('Martial')
             self.hpdie = 12
             self.primary_stat = 'STR'
             self.saving_throws.append('STR')
             self.saving_throws.append('CON')
-        elif mainclass == 'fighter' or mainclass == 5:
-            self.player_class = 'Fighter'
+        elif mainclass == 'Warlock':
             self.armor_train.append('Simple')
             self.armor_train.append('Martial')
             self.hpdie = 12
             self.primary_stat = 'STR'
             self.saving_throws.append('STR')
             self.saving_throws.append('CON')
-        elif mainclass == 'monk' or mainclass == 6:
-            self.player_class = 'Monk'
-            self.armor_train.append('Simple')
-            self.armor_train.append('Martial')
-            self.hpdie = 12
-            self.primary_stat = 'STR'
-            self.saving_throws.append('STR')
-            self.saving_throws.append('CON')
-        elif mainclass == 'paladin' or mainclass == 7:
-            self.player_class = 'Paladin'
-            self.armor_train.append('Simple')
-            self.armor_train.append('Martial')
-            self.hpdie = 12
-            self.primary_stat = 'STR'
-            self.saving_throws.append('STR')
-            self.saving_throws.append('CON')
-        elif mainclass == 'ranger' or mainclass == 8:
-            self.player_class = 'Ranger'
-            self.armor_train.append('Simple')
-            self.armor_train.append('Martial')
-            self.hpdie = 12
-            self.primary_stat = 'STR'
-            self.saving_throws.append('STR')
-            self.saving_throws.append('CON')
-        elif mainclass == 'rogue' or mainclass == 9:
-            self.player_class = 'Rogue'
-            self.armor_train.append('Simple')
-            self.armor_train.append('Martial')
-            self.hpdie = 12
-            self.primary_stat = 'STR'
-            self.saving_throws.append('STR')
-            self.saving_throws.append('CON')
-        elif mainclass == 'sorcerer' or mainclass == 10:
-            self.player_class = 'Sorcerer'
-            self.armor_train.append('Simple')
-            self.armor_train.append('Martial')
-            self.hpdie = 12
-            self.primary_stat = 'STR'
-            self.saving_throws.append('STR')
-            self.saving_throws.append('CON')
-        elif mainclass == 'warlock' or mainclass == 11:
-            self.player_class = 'Warlock'
-            self.armor_train.append('Simple')
-            self.armor_train.append('Martial')
-            self.hpdie = 12
-            self.primary_stat = 'STR'
-            self.saving_throws.append('STR')
-            self.saving_throws.append('CON')
-        elif mainclass == 'wizard' or mainclass == 12:
-            self.player_class = 'Wizard'
+        elif mainclass == 'Wizard':
             self.armor_train.append('Simple')
             self.armor_train.append('Martial')
             self.hpdie = 12
@@ -462,6 +517,6 @@ Tim = Character('Tim')
 # print(Tim.inventory)
 # Tim.sub_inv('Gold',1)
 # print(Tim.inventory)
-Tim.set_background()
-print(Tim.background)
-print(Tim.inventory)
+Tim.set_class()
+print(Tim.skills)
+
