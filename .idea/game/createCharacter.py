@@ -583,6 +583,33 @@ class Character():
         else:
             pass
 
+class GameTile():
+    def __init__(self):
+        self.tile_id = ''
+        self.players = []
+        self.enemies = []
+        self.objects = []
+        self.doors = []
+        self.spawn_points = []
+
+class Gametstate():
+    def __init__(self):
+        self.running = True
+        self.map = {
+            'loaded_tiles':[{'1':''},{'2':''},{'3':''},{'4':''},{'5':''},{'6':''},{'7':''},{'8':''},{'9':''}],
+            'spawn_points':[],
+        }
+
+    def load_tile(self,tile_id,position,objects):
+        new_tile = GameTile()
+        new_tile.tile_id = tile_id
+        new_tile.objects = objects
+        self.map['loaded_tiles'].append(new_tile)
+        for spawn in new_tile.spawn_points:
+            self.map['spawn_points'].append(spawn)
+
+
+
 Tim = Character('Tim')
 # print(Tim.name)
 # Tim.add_inv('Gold',2)
