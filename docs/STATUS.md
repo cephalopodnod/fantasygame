@@ -8,7 +8,7 @@ _Read this first when picking the project back up. Updated at the end of every w
 
 ## Next step
 
-**Finish piece 4:** the user copies `build\win_amd64\` to their second PC and runs `fantasygame.exe` (Phase 0's "done when"). Also check the first GitHub Actions run went green, and try one hand-started `.exe` build there.
+**Finish piece 4:** the user copies `build\win_amd64\` to their second PC and runs `fantasygame.exe` (Phase 0's "done when"). Optionally try one hand-started `.exe` build on GitHub (Actions -> CI -> Run workflow).
 
 Then: **Phase 1 — Rules engine** ([PROJECT_PLAN.md §7](PROJECT_PLAN.md#7-phases)). Open questions for its first piece go here once Phase 0 is closed.
 
@@ -41,6 +41,7 @@ Then: **Phase 1 — Rules engine** ([PROJECT_PLAN.md §7](PROJECT_PLAN.md#7-phas
 - `build_exe.bat` + `setup.py` (Panda3D `build_apps`) build `build\win_amd64\fantasygame.exe` (~76 MB folder). Tested here from another folder with no Python on PATH: renders the same as the dev version.
 - The game finds `assets/` next to the `.exe` when packaged; models load through `gltf.load_model` (plugin lookup doesn't work when packaged).
 - `.github/workflows/ci.yml`: checks on every push; the `.exe` build only on "Run workflow" with "Build the Windows .exe" ticked (user's choice).
+- First CI run passed (all checks green; `.exe` build skipped as intended). Merged into `master`.
 
 ## Open questions
 
