@@ -1,0 +1,41 @@
+# Checks run on every push and pull request.
+# The Windows .exe is built only when started by hand: GitHub -> Actions -> CI -> "Run workflow",
+# tick "Build the Windows .exe". The build appears as a downloadable zip on that run's page.
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      build_exe:
+        description: Build the Windows .exe
+        type: boolean
+        default: false
+
+jobs:
+  checks:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --frozen
+      - run: uv run pytest
+      - run: uv run ruff check
+      - run: uv run ruff format --check
+      - run: uv run pyright
+
+  build-exe:
+    if: github.event_name == 'workflow_dispatch' && inputs.build_exe
+    needs: checks
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --frozen
+      - run: .\build_exe.bat
+        shell: cmd
+      - uses: actions/upload-artifact@v4
+        with:
+          name: fantasygame-windows
+          path: build/win_amd64/

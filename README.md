@@ -22,10 +22,16 @@ A co-op fantasy RPG with real-time exploration and turn-based hex-grid combat, b
    ```
    uv sync
    ```
-3. Run the game:
+3. Run the game (or double-click `run_game.bat`):
    ```
    uv run python -m fantasygame
    ```
+
+## Building the Windows game
+
+Double-click `build_exe.bat` (or run it in a terminal). The game lands in `build\win_amd64\`; copy that whole folder to any Windows PC and run `fantasygame.exe` — no Python needed. The game's log file is `%LOCALAPPDATA%\fantasygame\output.log`.
+
+GitHub can build it too: **Actions → CI → Run workflow**, tick **Build the Windows .exe**, then download `fantasygame-windows` from the finished run. Every push runs the checks (tests, lint, type check) automatically.
 
 ## Development commands
 

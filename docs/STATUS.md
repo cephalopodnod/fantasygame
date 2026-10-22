@@ -8,7 +8,9 @@ _Read this first when picking the project back up. Updated at the end of every w
 
 ## Next step
 
-**Phase 0, piece 4 — Windows build + CI:** package the scene into a Windows `.exe` with Panda3D's `build_apps` (the game must find `assets/` once packaged), test it on the user's second PC, and set up GitHub Actions: checks (tests, ruff, pyright) on every push; the `.exe` build only when started by hand ("Run workflow" with a "build exe" option).
+**Finish piece 4:** the user copies `build\win_amd64\` to their second PC and runs `fantasygame.exe` (Phase 0's "done when"). Also check the first GitHub Actions run went green, and try one hand-started `.exe` build there.
+
+Then: **Phase 1 — Rules engine** ([PROJECT_PLAN.md §7](PROJECT_PLAN.md#7-phases)). Open questions for its first piece go here once Phase 0 is closed.
 
 ## Phase 0 progress
 
@@ -17,7 +19,7 @@ _Read this first when picking the project back up. Updated at the end of every w
 | 1 | Project setup: `pyproject.toml`, uv, package layout, tests, ruff, pyright, `.gitignore`, `.gitattributes` | Done |
 | 2 | Docs: [vision.md](vision.md), [house-rules.md](house-rules.md), [story/jester.md](story/jester.md), README | Done |
 | 3 | First Panda3D scene (hex floor, camera, placeholder character) | Done |
-| 4 | Windows build + GitHub Actions CI | **Next** |
+| 4 | Windows build + GitHub Actions CI | Built, **awaiting test on second PC** |
 | — | Learning Panda3D basics in a `sandbox/` folder | Alongside 3–4 |
 
 ## Last session (2026-10-21)
@@ -34,9 +36,15 @@ _Read this first when picking the project back up. Updated at the end of every w
 - Placeholder character: KayKit Knight (CC0, 76 animations) in `assets/models/characters/kaykit_knight/`. Its spare weapons are hidden through the manifest.
 - Decisions (recorded in [PROJECT_PLAN.md §8](PROJECT_PLAN.md#8-placeholder-art-plan)): **pointy-top hexes** in axial coordinates; one height level = 2.5 ft (provisional); BG3-style camera controls.
 
+## This session (2026-10-21, piece 4)
+
+- `build_exe.bat` + `setup.py` (Panda3D `build_apps`) build `build\win_amd64\fantasygame.exe` (~76 MB folder). Tested here from another folder with no Python on PATH: renders the same as the dev version.
+- The game finds `assets/` next to the `.exe` when packaged; models load through `gltf.load_model` (plugin lookup doesn't work when packaged).
+- `.github/workflows/ci.yml`: checks on every push; the `.exe` build only on "Run workflow" with "Build the Windows .exe" ticked (user's choice).
+
 ## Open questions
 
-None of these block piece 4.
+None of these block finishing Phase 0.
 
 **Piece 3**
 - Height level of 2.5 ft (0.762 m) is provisional — revisit with the climbing/falling/jumping rules in Phase 2.

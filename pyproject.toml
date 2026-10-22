@@ -18,6 +18,8 @@ dev = [
     "pytest",
     "ruff",
     "pyright",
+    "setuptools",  # build_apps (Windows .exe)
+    "pip",         # build_apps downloads the target platform's wheels
 ]
 
 [build-system]

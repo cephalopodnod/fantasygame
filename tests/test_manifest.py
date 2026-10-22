@@ -1,9 +1,10 @@
 import json
+import sys
 from pathlib import Path
 
 import pytest
 
-from fantasygame.content.manifest import load_manifest
+from fantasygame.content.manifest import _find_assets_dir, load_manifest
 
 
 def test_every_model_in_the_manifest_exists_and_is_licensed() -> None:
@@ -24,3 +25,9 @@ def test_model_without_a_license_is_rejected(tmp_path: Path) -> None:
     (tmp_path / "manifest.json").write_text(json.dumps(manifest), encoding="utf-8")
     with pytest.raises(ValueError, match="license"):
         load_manifest(tmp_path)
+
+
+def test_packaged_exe_finds_assets_next_to_itself(monkeypatch, tmp_path: Path) -> None:
+    monkeypatch.setattr(sys, "frozen", True, raising=False)
+    monkeypatch.setattr(sys, "executable", str(tmp_path / "fantasygame.exe"))
+    assert _find_assets_dir() == tmp_path.resolve() / "assets"

@@ -5,12 +5,19 @@ Swapping a placeholder for final art means changing one entry in `assets/manifes
 """
 
 import json
+import sys
 from dataclasses import dataclass
 from pathlib import Path
 
-# src/fantasygame/content/manifest.py -> repo root. Packaged builds (Phase 0, piece 4) will
-# need their own lookup.
-ASSETS_DIR = Path(__file__).resolve().parents[3] / "assets"
+
+def _find_assets_dir() -> Path:
+    if getattr(sys, "frozen", False):  # packaged .exe: assets/ sits next to it
+        return Path(sys.executable).resolve().parent / "assets"
+    # Running from the repo: src/fantasygame/content/manifest.py -> repo root.
+    return Path(__file__).resolve().parents[3] / "assets"
+
+
+ASSETS_DIR = _find_assets_dir()
 MANIFEST_VERSION = 1
 
 

@@ -42,6 +42,9 @@ uv run pytest                  # tests
 uv run ruff check              # lint
 uv run ruff format             # format
 uv run pyright                 # type check
+build_exe.bat                  # Windows build -> build\win_amd64\fantasygame.exe
 ```
+
+GitHub Actions (`.github/workflows/ci.yml`) runs the checks on every push. The `.exe` is built on GitHub only by hand: Actions -> CI -> Run workflow -> tick "Build the Windows .exe".
 
 Run tests, ruff (check + format --check) and pyright before every commit.

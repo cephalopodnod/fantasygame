@@ -198,6 +198,10 @@ Estimates assume 40 hrs/week and include learning time, since this is your first
 - **Hex grid:** pointy-top hexes (a corner faces north) in axial coordinates `(q, r)`, following Red Blob Games. One height level is 2.5 ft (0.762 m) — provisional until the climbing and falling rules in Phase 2. Code: `sim/hexgrid.py`.
 - **Manifest entries** carry `path`, `scale` (to metres), `heading` (to face +Y), `hidden_parts`, `author` and `license`. The first placeholder is the KayKit Knight (CC0, Kay Lousberg).
 
+## 8a. Building and CI
+- **Windows build:** Panda3D's `build_apps` (config in `setup.py`), started by `build_exe.bat`. It pins packages from `uv.lock`, puts `assets/` next to `fantasygame.exe`, and logs to `%LOCALAPPDATA%\fantasygame\output.log`. Models load through `gltf.load_model` directly, because Panda3D's automatic plugin lookup doesn't exist in a packaged build.
+- **CI:** GitHub Actions on Windows runs tests, ruff and pyright on every push. The `.exe` is built only when started by hand (Run workflow → "Build the Windows .exe") and kept as a downloadable artifact.
+
 ## 9. Risks
 
 | Risk | Mitigation |
