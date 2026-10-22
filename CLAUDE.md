@@ -34,7 +34,7 @@ Update `docs/STATUS.md`: last-updated date, current phase and piece, next step, 
 
 ## Commands
 
-`uv` lives in `C:\Users\timot\.local\bin` (add to PATH in the shell if `uv` isn't found).
+`uv` lives in `%USERPROFILE%\.local\bin` (add to PATH in the shell if `uv` isn't found). After cloning on a new machine, run `uv sync` once.
 
 ```
 uv run python -m fantasygame   # run
