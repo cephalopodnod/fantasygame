@@ -4,7 +4,7 @@ _Read this first when picking the project back up. Updated at the end of every w
 
 **Last updated:** 2026-10-21
 **Current phase:** Phase 0 — Foundation and learning ([PROJECT_PLAN.md §7](PROJECT_PLAN.md#7-phases))
-**Branch:** `restructure-and-plan` (not yet merged into `master`)
+**Branch:** `master`
 
 ## Next step
 
@@ -50,6 +50,5 @@ None of these block piece 3.
 
 ## Housekeeping
 
-- Merge `restructure-and-plan` into `master` when ready.
 - PyCharm: open the repo root, use `.venv\Scripts\python.exe` as the interpreter, mark `src` as Sources Root and `tests` as Test Sources Root. (Not yet confirmed done.)
 - `uv` is installed in `C:\Users\timot\.local\bin`; restart terminals so it's on PATH.
