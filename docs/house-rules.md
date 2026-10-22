@@ -79,6 +79,20 @@ Every place where the game deliberately differs from, or adds to, the 2014 rules
 - **2014 rules:** ability scores only increase at set levels (usually 4, 8, 12, 16 and 19; Fighters also at 6 and 14, Rogues also at 10), by +2 total or through a feat.
 - **Ours:** the same. The original idea of per-level stat growth is dropped.
 
+### Ability scores at creation — Decided: 2014 options
+- **2014 rules:** standard array, point-buy, or rolling 4d6 and dropping the lowest die.
+- **Ours:** all three are offered.
+- **Note:** because every roll is fresh (see Dice), a player can reload and roll again. Accepted for now.
+
+### Hit points on level-up — Decided: 2014 rule, rolled
+- **2014 rules:** roll the class hit die + CON modifier, or take the fixed average.
+- **Ours:** always rolled (minimum 1 per level). Level 1 is still the maximum of the hit die + CON.
+- **Note:** a player can reload from before a level-up to roll again, as above.
+
+### Multiclassing — Decided: 2014 rules
+- **2014 rules (SRD 5.1):** ability-score prerequisites, limited proficiencies from the second class, and a combined spell-slot table.
+- **Ours:** the same. The code supports it from Phase 1; the UI for it comes later.
+
 ### Short rests per long rest — Decided
 - **2014 rules:** no limit; a short rest just takes 1 hour.
 - **Ours:** the party gets a limited number of short rests between long rests, set by difficulty: **5 − difficulty level**.

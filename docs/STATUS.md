@@ -3,51 +3,42 @@
 _Read this first when picking the project back up. Updated at the end of every working session._
 
 **Last updated:** 2026-10-21
-**Current phase:** Phase 0 — Foundation and learning ([PROJECT_PLAN.md §7](PROJECT_PLAN.md#7-phases))
+**Current phase:** Phase 1 — Rules engine ([PROJECT_PLAN.md §7](PROJECT_PLAN.md#7-phases))
 **Branch:** `master`
 
 ## Next step
 
-**Finish piece 4:** the user copies `build\win_amd64\` to their second PC and runs `fantasygame.exe` (Phase 0's "done when"). Optionally try one hand-started `.exe` build on GitHub (Actions -> CI -> Run workflow).
+**Phase 1, piece 2 — data foundation:** `data/` folder, pydantic schemas, the `source` field and its test, and the SRD import tool.
 
-Then: **Phase 1 — Rules engine** ([PROJECT_PLAN.md §7](PROJECT_PLAN.md#7-phases)). Open questions for its first piece go here once Phase 0 is closed.
+Still open from Phase 0: run `build\win_amd64\fantasygame.exe` on the user's second PC (Phase 0's "done when"). Doesn't block Phase 1.
 
-## Phase 0 progress
+## Phase 1 progress
 
 | Piece | What | State |
 |---|---|---|
-| 1 | Project setup: `pyproject.toml`, uv, package layout, tests, ruff, pyright, `.gitignore`, `.gitattributes` | Done |
-| 2 | Docs: [vision.md](vision.md), [house-rules.md](house-rules.md), [story/jester.md](story/jester.md), README | Done |
-| 3 | First Panda3D scene (hex floor, camera, placeholder character) | Done |
-| 4 | Windows build + GitHub Actions CI | Built, **awaiting test on second PC** |
-| — | Learning Panda3D basics in a `sandbox/` folder | Alongside 3–4 |
+| 1 | Dice service: expressions, advantage, fresh randomness, roll log, fixed dice for tests/replay | Done |
+| 2 | Data foundation: `data/`, schemas, `source` field, SRD import tool | **Next** |
+| 3 | Abilities, proficiency, skills, checks and saves | To do |
+| 4 | Features and effects system (plan choice #4) | To do |
+| 5 | Races, backgrounds, classes, character creation (point-buy, standard array, 4d6) | To do |
+| 6 | Levelling: rolled HP, hit dice, spell slots incl. pact magic and multiclass, rests, conditions | To do |
+| 7 | Skill-tree format + one sample tree | To do |
+| 8 | "Done when": level 1/5/10 characters of all 12 classes match the SRD | To do |
 
-## Last session (2026-10-21)
+## This session (2026-10-21)
 
-- Reviewed the old prototype and moved it to `legacy/`.
-- Wrote the project plan and settled the big decisions (2014 SRD rules, Panda3D, BG3-style hex combat, co-op + solo, Steam release, unique dice rolls).
-- Set up the project (piece 1) and the design documents (piece 2).
-- Settled house rules: 5 difficulty levels with 5 − difficulty short rests per long rest; the spirit-fight "Restless" debuff (one ineffective short rest per stack, removed by a cleansing task); the main-stat curse hits the stat that matters most for damage and is locked at the first curse; spawned children give no XP or loot (anti-farming); ability scores follow the 2014 set levels.
-
-## This session (2026-10-21, piece 3)
-
-- Reviewed by the user: display looks good. `run_game.bat` added for double-click testing.
-- Built the test scene: `sim/hexgrid.py` (hex maths, engine-free), `content/manifest.py` + `assets/manifest.json` (models by ID), `client/` (hex floor mesh, BG3-style camera, scene). `python -m fantasygame --screenshot FILE` renders offscreen for checks.
-- Placeholder character: KayKit Knight (CC0, 76 animations) in `assets/models/characters/kaykit_knight/`. Its spare weapons are hidden through the manifest.
-- Decisions (recorded in [PROJECT_PLAN.md §8](PROJECT_PLAN.md#8-placeholder-art-plan)): **pointy-top hexes** in axial coordinates; one height level = 2.5 ft (provisional); BG3-style camera controls.
-
-## This session (2026-10-21, piece 4)
-
-- `build_exe.bat` + `setup.py` (Panda3D `build_apps`) build `build\win_amd64\fantasygame.exe` (~76 MB folder). Tested here from another folder with no Python on PATH: renders the same as the dev version.
-- The game finds `assets/` next to the `.exe` when packaged; models load through `gltf.load_model` (plugin lookup doesn't work when packaged).
-- `.github/workflows/ci.yml`: checks on every push; the `.exe` build only on "Run workflow" with "Build the Windows .exe" ticked (user's choice).
-- First CI run passed (all checks green; `.exe` build skipped as intended). Merged into `master`.
+- **Phase 0, pieces 3–4:** hex test scene (pointy-top hexes, BG3-style camera, KayKit Knight placeholder), `run_game.bat`, Windows build (`build_exe.bat`, ~76 MB folder, tested here without Python), GitHub Actions CI (checks on every push; `.exe` build by hand). All merged into `master`; CI green.
+- **Phase 1 decisions** (in [house-rules.md](house-rules.md)): HP on level-up is **rolled**; ability scores by **point-buy, standard array or 4d6 drop lowest**; **multiclassing** per the 2014 rules (code from Phase 1, UI later).
+- **Piece 1:** `rules/dice.py` — `Dice` with `roll("2d6+3")`, `"4d6kh3"`, and `d20(Advantage...)`; `SystemRandomSource` (OS randomness, nothing to save) and `FixedSequenceSource` (tests and replay). Every result keeps its raw faces and reason; listeners (later the session log) see every roll.
 
 ## Open questions
 
-None of these block finishing Phase 0.
+None of these block piece 2.
 
-**Piece 3**
+**Phase 1**
+- Rolled HP and 4d6 can be re-rolled by reloading a save (a side effect of unique dice). Accepted for now — revisit if it feels exploitable.
+
+**Earlier**
 - Height level of 2.5 ft (0.762 m) is provisional — revisit with the climbing/falling/jumping rules in Phase 2.
 
 **Vision** ([vision.md §13](vision.md#13-open-questions))
@@ -67,5 +58,6 @@ None of these block finishing Phase 0.
 
 ## Housekeeping
 
-- Editor: VS Code. Pick `.venv\Scripts\python.exe` as the interpreter (Ctrl+Shift+P → "Python: Select Interpreter"). The old PyCharm setup note no longer applies.
+- Editor: VS Code. Pick `.venv\Scripts\python.exe` as the interpreter (Ctrl+Shift+P → "Python: Select Interpreter").
 - `uv` is installed in `%USERPROFILE%\.local\bin` on each machine; after cloning, run `uv sync` once.
+- Build the game: `build_exe.bat`. Its log on a player's PC: `%LOCALAPPDATA%\fantasygame\output.log`.
