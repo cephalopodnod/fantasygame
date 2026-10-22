@@ -195,6 +195,8 @@ Estimates assume 40 hrs/week and include learning time, since this is your first
 - Free CC0 packs (e.g. Quaternius, KayKit, Kenney) for characters, monsters and dungeon pieces until your models are ready.
 - Fixed conventions from day one: 1 unit = 1 metre; one hex = 5 ft (1.524 m) across its flats; Y-forward, Z-up (Panda3D's default); a shared humanoid skeleton and standard animation names (`idle`, `walk`, `run`, `attack_melee`, `cast`, `hit`, `die`, …).
 - Every model is referenced by an ID in `assets/manifest.json`, so replacing one is a file swap.
+- **Hex grid:** pointy-top hexes (a corner faces north) in axial coordinates `(q, r)`, following Red Blob Games. One height level is 2.5 ft (0.762 m) — provisional until the climbing and falling rules in Phase 2. Code: `sim/hexgrid.py`.
+- **Manifest entries** carry `path`, `scale` (to metres), `heading` (to face +Y), `hidden_parts`, `author` and `license`. The first placeholder is the KayKit Knight (CC0, Kay Lousberg).
 
 ## 9. Risks
 

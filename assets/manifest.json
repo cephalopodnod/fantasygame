@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "models": {
+    "placeholder.knight": {
+      "path": "models/characters/kaykit_knight/Knight.glb",
+      "scale": 0.78,
+      "heading": 180,
+      "hidden_parts": ["2H_Sword", "1H_Sword_Offhand", "Spike_Shield", "Rectangle_Shield", "Badge_Shield"],
+      "author": "Kay Lousberg (KayKit Adventurers 1.0)",
+      "license": "CC0-1.0"
+    }
+  }
+}

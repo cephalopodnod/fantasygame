@@ -8,9 +8,9 @@ _Read this first when picking the project back up. Updated at the end of every w
 
 ## Next step
 
-**Phase 0, piece 3 — first Panda3D scene:** a hex-grid floor with height, a camera that rotates and zooms, and one placeholder glTF character with PBR lighting, opened by `uv run python -m fantasygame`.
+**Review piece 3 with the user:** run `uv run python -m fantasygame` and try the camera (WASD/arrows, Q/E or middle-drag, wheel). Adjust feel (speeds, starting angle) if needed.
 
-After that: piece 4 — package the scene into a Windows `.exe` with Panda3D's `build_apps`, and set up GitHub Actions to run the checks on every push.
+Then: piece 4 — package the scene into a Windows `.exe` with Panda3D's `build_apps` (including how the game finds `assets/` once packaged), and set up GitHub Actions to run the checks on every push.
 
 ## Phase 0 progress
 
@@ -18,7 +18,7 @@ After that: piece 4 — package the scene into a Windows `.exe` with Panda3D's `
 |---|---|---|
 | 1 | Project setup: `pyproject.toml`, uv, package layout, tests, ruff, pyright, `.gitignore`, `.gitattributes` | Done |
 | 2 | Docs: [vision.md](vision.md), [house-rules.md](house-rules.md), [story/jester.md](story/jester.md), README | Done |
-| 3 | First Panda3D scene (hex floor, camera, placeholder character) | **Next** |
+| 3 | First Panda3D scene (hex floor, camera, placeholder character) | Built, **awaiting review** |
 | 4 | Windows build + GitHub Actions CI | To do |
 | — | Learning Panda3D basics in a `sandbox/` folder | Alongside 3–4 |
 
@@ -29,9 +29,18 @@ After that: piece 4 — package the scene into a Windows `.exe` with Panda3D's `
 - Set up the project (piece 1) and the design documents (piece 2).
 - Settled house rules: 5 difficulty levels with 5 − difficulty short rests per long rest; the spirit-fight "Restless" debuff (one ineffective short rest per stack, removed by a cleansing task); the main-stat curse hits the stat that matters most for damage and is locked at the first curse; spawned children give no XP or loot (anti-farming); ability scores follow the 2014 set levels.
 
+## This session (2026-10-21, piece 3)
+
+- Built the test scene: `sim/hexgrid.py` (hex maths, engine-free), `content/manifest.py` + `assets/manifest.json` (models by ID), `client/` (hex floor mesh, BG3-style camera, scene). `python -m fantasygame --screenshot FILE` renders offscreen for checks.
+- Placeholder character: KayKit Knight (CC0, 76 animations) in `assets/models/characters/kaykit_knight/`. Its spare weapons are hidden through the manifest.
+- Decisions (recorded in [PROJECT_PLAN.md §8](PROJECT_PLAN.md#8-placeholder-art-plan)): **pointy-top hexes** in axial coordinates; one height level = 2.5 ft (provisional); BG3-style camera controls.
+
 ## Open questions
 
-None of these block piece 3.
+None of these block piece 4.
+
+**Piece 3**
+- Height level of 2.5 ft (0.762 m) is provisional — revisit with the climbing/falling/jumping rules in Phase 2.
 
 **Vision** ([vision.md §13](vision.md#13-open-questions))
 - Q1 — "Expansion" and "Story" in the New Game menu: campaigns or DLC?
@@ -50,5 +59,5 @@ None of these block piece 3.
 
 ## Housekeeping
 
-- PyCharm: open the repo root, use `.venv\Scripts\python.exe` as the interpreter, mark `src` as Sources Root and `tests` as Test Sources Root. (Not yet confirmed done.)
-- `uv` is installed in `C:\Users\timot\.local\bin`; restart terminals so it's on PATH.
+- Editor: VS Code. Pick `.venv\Scripts\python.exe` as the interpreter (Ctrl+Shift+P → "Python: Select Interpreter"). The old PyCharm setup note no longer applies.
+- `uv` is installed in `%USERPROFILE%\.local\bin` on each machine; after cloning, run `uv sync` once.
