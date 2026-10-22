@@ -8,9 +8,7 @@ _Read this first when picking the project back up. Updated at the end of every w
 
 ## Next step
 
-**Review piece 3 with the user:** run `uv run python -m fantasygame` and try the camera (WASD/arrows, Q/E or middle-drag, wheel). Adjust feel (speeds, starting angle) if needed.
-
-Then: piece 4 — package the scene into a Windows `.exe` with Panda3D's `build_apps` (including how the game finds `assets/` once packaged), and set up GitHub Actions to run the checks on every push.
+**Phase 0, piece 4 — Windows build + CI:** package the scene into a Windows `.exe` with Panda3D's `build_apps` (the game must find `assets/` once packaged), test it on the user's second PC, and set up GitHub Actions: checks (tests, ruff, pyright) on every push; the `.exe` build only when started by hand ("Run workflow" with a "build exe" option).
 
 ## Phase 0 progress
 
@@ -18,8 +16,8 @@ Then: piece 4 — package the scene into a Windows `.exe` with Panda3D's `build_
 |---|---|---|
 | 1 | Project setup: `pyproject.toml`, uv, package layout, tests, ruff, pyright, `.gitignore`, `.gitattributes` | Done |
 | 2 | Docs: [vision.md](vision.md), [house-rules.md](house-rules.md), [story/jester.md](story/jester.md), README | Done |
-| 3 | First Panda3D scene (hex floor, camera, placeholder character) | Built, **awaiting review** |
-| 4 | Windows build + GitHub Actions CI | To do |
+| 3 | First Panda3D scene (hex floor, camera, placeholder character) | Done |
+| 4 | Windows build + GitHub Actions CI | **Next** |
 | — | Learning Panda3D basics in a `sandbox/` folder | Alongside 3–4 |
 
 ## Last session (2026-10-21)
@@ -31,6 +29,7 @@ Then: piece 4 — package the scene into a Windows `.exe` with Panda3D's `build_
 
 ## This session (2026-10-21, piece 3)
 
+- Reviewed by the user: display looks good. `run_game.bat` added for double-click testing.
 - Built the test scene: `sim/hexgrid.py` (hex maths, engine-free), `content/manifest.py` + `assets/manifest.json` (models by ID), `client/` (hex floor mesh, BG3-style camera, scene). `python -m fantasygame --screenshot FILE` renders offscreen for checks.
 - Placeholder character: KayKit Knight (CC0, 76 animations) in `assets/models/characters/kaykit_knight/`. Its spare weapons are hidden through the manifest.
 - Decisions (recorded in [PROJECT_PLAN.md §8](PROJECT_PLAN.md#8-placeholder-art-plan)): **pointy-top hexes** in axial coordinates; one height level = 2.5 ft (provisional); BG3-style camera controls.

@@ -37,7 +37,7 @@ Update `docs/STATUS.md`: last-updated date, current phase and piece, next step, 
 `uv` lives in `%USERPROFILE%\.local\bin` (add to PATH in the shell if `uv` isn't found). After cloning on a new machine, run `uv sync` once.
 
 ```
-uv run python -m fantasygame   # run
+uv run python -m fantasygame   # run (or double-click run_game.bat)
 uv run pytest                  # tests
 uv run ruff check              # lint
 uv run ruff format             # format
