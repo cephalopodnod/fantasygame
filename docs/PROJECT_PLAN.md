@@ -36,7 +36,7 @@ Everything else — extra subclasses, skill trees, backgrounds, feats, the world
 ### 2.2 Engine
 Panda3D: a mature 3D engine with a C++ core and a Python API. It has shipped commercial games, loads glTF models from Blender, supports modern (PBR) lighting through `panda3d-simplepbr`, and packages Windows builds with its own `build_apps` tool. We go straight to Panda3D rather than prototyping in something simpler and switching later.
 
-**Python version:** your PyCharm project is set to 3.14. Pin the project to the newest Python version Panda3D publishes Windows wheels for (checked in Phase 0).
+**Python version:** 3.14. Checked in Phase 0: Panda3D 1.10.16 publishes Windows wheels for it.
 
 ### 2.3 What "like Baldur's Gate 3" means for the systems
 - **Exploration** happens in real time. Characters move freely; the camera follows the party.
@@ -74,7 +74,7 @@ These are fixed from the start, because getting them wrong means rewriting large
 
 | Purpose | Choice |
 |---|---|
-| Language | Python (version pinned to Panda3D support), with type hints checked by `pyright` |
+| Language | Python 3.14, with type hints checked by `pyright` |
 | Environment and dependencies | `uv` with `pyproject.toml` |
 | 3D engine | Panda3D, `panda3d-simplepbr`, `panda3d-gltf` |
 | Art pipeline | Blender → glTF (`.glb`); free CC0 placeholder packs until your art is ready |

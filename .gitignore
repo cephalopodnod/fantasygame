@@ -1,0 +1,22 @@
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+
+# Virtual environment (created by uv)
+.venv/
+
+# Build output (Panda3D build_apps, packaging)
+build/
+dist/
+*.egg-info/
+
+# Local game data created while playing/testing
+/saves/
+/logs/
+
+# OS clutter
+Thumbs.db
+desktop.ini
+.DS_Store
