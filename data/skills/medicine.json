@@ -1,0 +1,7 @@
+{
+  "id": "medicine",
+  "name": "Medicine",
+  "source": "srd-5.1",
+  "description": "A Wisdom (Medicine) check lets you try to stabilize a dying companion or diagnose an illness.",
+  "ability": "wisdom"
+}

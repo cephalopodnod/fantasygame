@@ -1,0 +1,10 @@
+{
+  "id": "celestial",
+  "name": "Celestial",
+  "source": "srd-5.1",
+  "kind": "exotic",
+  "script": "Celestial",
+  "typical_speakers": [
+    "Celestials"
+  ]
+}

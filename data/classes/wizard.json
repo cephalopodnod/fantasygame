@@ -1,0 +1,42 @@
+{
+  "id": "wizard",
+  "name": "Wizard",
+  "source": "srd-5.1",
+  "hit_die": 6,
+  "saving_throws": [
+    "intelligence",
+    "wisdom"
+  ],
+  "grants": {
+    "proficiencies": [
+      "daggers",
+      "darts",
+      "slings",
+      "quarterstaffs",
+      "crossbows-light"
+    ],
+    "choices": [
+      {
+        "kind": "skill",
+        "choose": 2,
+        "options": [
+          "arcana",
+          "history",
+          "insight",
+          "investigation",
+          "medicine",
+          "religion"
+        ]
+      }
+    ]
+  },
+  "spellcasting_ability": "intelligence",
+  "multiclassing": {
+    "requires_all": [
+      {
+        "ability": "intelligence",
+        "score": 13
+      }
+    ]
+  }
+}

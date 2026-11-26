@@ -1,0 +1,81 @@
+{
+  "id": "monk",
+  "name": "Monk",
+  "source": "srd-5.1",
+  "hit_die": 8,
+  "saving_throws": [
+    "strength",
+    "dexterity"
+  ],
+  "grants": {
+    "proficiencies": [
+      "simple-weapons",
+      "shortswords"
+    ],
+    "choices": [
+      {
+        "kind": "skill",
+        "choose": 2,
+        "options": [
+          "acrobatics",
+          "athletics",
+          "history",
+          "insight",
+          "religion",
+          "stealth"
+        ]
+      },
+      {
+        "kind": "proficiency",
+        "choose": 1,
+        "options": [
+          "alchemists-supplies",
+          "brewers-supplies",
+          "calligraphers-supplies",
+          "carpenters-tools",
+          "cartographers-tools",
+          "cobblers-tools",
+          "cooks-utensils",
+          "glassblowers-tools",
+          "jewelers-tools",
+          "leatherworkers-tools",
+          "masons-tools",
+          "painters-supplies",
+          "potters-tools",
+          "smiths-tools",
+          "tinkers-tools",
+          "weavers-tools",
+          "woodcarvers-tools",
+          "bagpipes",
+          "drum",
+          "dulcimer",
+          "flute",
+          "lute",
+          "lyre",
+          "horn",
+          "pan-flute",
+          "shawm",
+          "viol"
+        ]
+      }
+    ]
+  },
+  "multiclassing": {
+    "requires_all": [
+      {
+        "ability": "dexterity",
+        "score": 13
+      },
+      {
+        "ability": "wisdom",
+        "score": 13
+      }
+    ],
+    "grants": {
+      "proficiencies": [
+        "simple-weapons",
+        "shortswords"
+      ]
+    }
+  }
+}

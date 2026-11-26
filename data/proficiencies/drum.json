@@ -1,0 +1,6 @@
+{
+  "id": "drum",
+  "name": "Drum",
+  "source": "srd-5.1",
+  "kind": "instrument"
+}

@@ -1,0 +1,10 @@
+{
+  "id": "goblin",
+  "name": "Goblin",
+  "source": "srd-5.1",
+  "kind": "standard",
+  "script": "Dwarvish",
+  "typical_speakers": [
+    "Goblinoids"
+  ]
+}

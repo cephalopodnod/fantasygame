@@ -1,0 +1,30 @@
+{
+  "id": "extra-language",
+  "name": "Extra Language",
+  "source": "srd-5.1",
+  "description": "You can speak, read, and write one extra language of your choice.",
+  "grants": {
+    "choices": [
+      {
+        "kind": "language",
+        "choose": 1,
+        "options": [
+          "dwarvish",
+          "giant",
+          "gnomish",
+          "goblin",
+          "halfling",
+          "orc",
+          "abyssal",
+          "celestial",
+          "draconic",
+          "deep-speech",
+          "infernal",
+          "primordial",
+          "sylvan",
+          "undercommon"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "abyssal",
+  "name": "Abyssal",
+  "source": "srd-5.1",
+  "kind": "exotic",
+  "script": "Infernal",
+  "typical_speakers": [
+    "Demons"
+  ]
+}

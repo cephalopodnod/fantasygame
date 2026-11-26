@@ -1,0 +1,7 @@
+{
+  "id": "strength",
+  "name": "Strength",
+  "source": "srd-5.1",
+  "description": "Strength measures bodily power, athletic training, and the extent to which you can exert raw physical force.\n\nA Strength check can model any attempt to lift, push, pull, or break something, to force your body through a space, or to otherwise apply brute force to a situation. The Athletics skill reflects aptitude in certain kinds of Strength checks.",
+  "abbreviation": "STR"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "elf-weapon-training",
+  "name": "Elf Weapon Training",
+  "source": "srd-5.1",
+  "description": "You have proficiency with the longsword, shortsword, shortbow, and longbow.",
+  "grants": {
+    "proficiencies": [
+      "longswords",
+      "shortswords",
+      "shortbows",
+      "longbows"
+    ]
+  }
+}

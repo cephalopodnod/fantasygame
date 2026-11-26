@@ -1,0 +1,7 @@
+{
+  "id": "dexterity",
+  "name": "Dexterity",
+  "source": "srd-5.1",
+  "description": "Dexterity measures agility, reflexes, and balance.\n\nA Dexterity check can model any attempt to move nimbly, quickly, or quietly, or to keep from falling on tricky footing. The Acrobatics, Sleight of Hand, and Stealth skills reflect aptitude in certain kinds of Dexterity checks.",
+  "abbreviation": "DEX"
+}

@@ -1,5 +1,5 @@
 @echo off
-rem Builds the Windows game into build\win_amd64\ (fantasygame.exe + assets\).
+rem Builds the Windows game into build\win_amd64\ (fantasygame.exe + assets\ + data\).
 rem To test on another PC, copy that whole folder across and double-click fantasygame.exe.
 
 cd /d "%~dp0"

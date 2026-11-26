@@ -1,0 +1,11 @@
+{
+  "id": "giant",
+  "name": "Giant",
+  "source": "srd-5.1",
+  "kind": "standard",
+  "script": "Dwarvish",
+  "typical_speakers": [
+    "Ogres",
+    "Giants"
+  ]
+}

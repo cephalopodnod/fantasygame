@@ -1,0 +1,10 @@
+{
+  "id": "primordial",
+  "name": "Primordial",
+  "source": "srd-5.1",
+  "kind": "exotic",
+  "script": "Dwarvish",
+  "typical_speakers": [
+    "Elementals"
+  ]
+}

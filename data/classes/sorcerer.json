@@ -1,0 +1,42 @@
+{
+  "id": "sorcerer",
+  "name": "Sorcerer",
+  "source": "srd-5.1",
+  "hit_die": 6,
+  "saving_throws": [
+    "constitution",
+    "charisma"
+  ],
+  "grants": {
+    "proficiencies": [
+      "daggers",
+      "darts",
+      "slings",
+      "quarterstaffs",
+      "crossbows-light"
+    ],
+    "choices": [
+      {
+        "kind": "skill",
+        "choose": 2,
+        "options": [
+          "arcana",
+          "deception",
+          "insight",
+          "intimidation",
+          "persuasion",
+          "religion"
+        ]
+      }
+    ]
+  },
+  "spellcasting_ability": "charisma",
+  "multiclassing": {
+    "requires_all": [
+      {
+        "ability": "charisma",
+        "score": 13
+      }
+    ]
+  }
+}

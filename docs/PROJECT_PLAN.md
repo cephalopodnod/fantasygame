@@ -202,6 +202,16 @@ Estimates assume 40 hrs/week and include learning time, since this is your first
 - **Windows build:** Panda3D's `build_apps` (config in `setup.py`), started by `build_exe.bat`. It pins packages from `uv.lock`, puts `assets/` next to `fantasygame.exe`, and logs to `%LOCALAPPDATA%\fantasygame\output.log`. Models load through `gltf.load_model` directly, because Panda3D's automatic plugin lookup doesn't exist in a packaged build.
 - **CI:** GitHub Actions on Windows runs tests, ruff and pyright on every push. The `.exe` is built only when started by hand (Run workflow → "Build the Windows .exe") and kept as a downloadable artifact.
 
+## 8b. Game data
+- **Our own format.** `tools/srd_import.py` converts the D&D 5e API's 2014 records into our schemas (`content/schemas.py`); the game never reads the API's format. Original content uses the same schemas.
+- **One record per file:** `data/<folder>/<id>.json`. The file name must equal the `id`, so an id can never be a name Windows reserves (`con`, `nul`, `aux`, `prn`, `com1`–`9`, `lpt1`–`9`); the schema rejects these. `RECORD_TYPES` in `schemas.py` maps each folder to its record type; an unknown folder is an error.
+- **`source` on every record:** `srd-5.1` or `original`. Re-running the importer replaces and prunes only `srd-5.1` files, so original files are never touched. SRD credit: `data/ATTRIBUTION.md` (must appear in the shipped game).
+- **References** are typed (`SkillId`, `TraitId`, …) and checked at load. Every problem in `data/` is reported in one error.
+- **Abilities** are a fixed enum (`Ability.STR` …) used directly by the rules. Their ids are full names (`strength`, `constitution` …), not the SRD's short codes, because `con.json` is not a legal file name on Windows; the importer translates the codes. The short form (`STR`) is kept as `abbreviation` for display. `data/abilities/` holds only their names and descriptions.
+- **Choices** ("two skills from…", "any language") are `kind`-tagged records with `choose` and `options`; no `options` means "any". Nested API choices are flattened.
+- **Upstream errors** are corrected in the importer, each with a comment (so far: disguise and forgery kits are not artisan's tools).
+- Imported so far: abilities, skills, languages, proficiencies (armour, weapons, tools), racial traits, races, subraces, backgrounds, classes (core fields only). Rules mechanics, class levels and features, spells and equipment come later.
+
 ## 9. Risks
 
 | Risk | Mitigation |

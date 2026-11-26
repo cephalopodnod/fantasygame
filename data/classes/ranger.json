@@ -1,0 +1,73 @@
+{
+  "id": "ranger",
+  "name": "Ranger",
+  "source": "srd-5.1",
+  "hit_die": 10,
+  "saving_throws": [
+    "strength",
+    "dexterity"
+  ],
+  "grants": {
+    "proficiencies": [
+      "light-armor",
+      "medium-armor",
+      "shields",
+      "simple-weapons",
+      "martial-weapons"
+    ],
+    "choices": [
+      {
+        "kind": "skill",
+        "choose": 3,
+        "options": [
+          "animal-handling",
+          "athletics",
+          "insight",
+          "investigation",
+          "nature",
+          "perception",
+          "stealth",
+          "survival"
+        ]
+      }
+    ]
+  },
+  "spellcasting_ability": "wisdom",
+  "multiclassing": {
+    "requires_all": [
+      {
+        "ability": "dexterity",
+        "score": 13
+      },
+      {
+        "ability": "wisdom",
+        "score": 13
+      }
+    ],
+    "grants": {
+      "proficiencies": [
+        "light-armor",
+        "medium-armor",
+        "shields",
+        "simple-weapons",
+        "martial-weapons"
+      ],
+      "choices": [
+        {
+          "kind": "skill",
+          "choose": 1,
+          "options": [
+            "animal-handling",
+            "athletics",
+            "insight",
+            "investigation",
+            "nature",
+            "perception",
+            "stealth",
+            "survival"
+          ]
+        }
+      ]
+    }
+  }
+}

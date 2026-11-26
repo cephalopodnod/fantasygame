@@ -1,0 +1,73 @@
+{
+  "id": "rogue",
+  "name": "Rogue",
+  "source": "srd-5.1",
+  "hit_die": 8,
+  "saving_throws": [
+    "dexterity",
+    "intelligence"
+  ],
+  "grants": {
+    "proficiencies": [
+      "light-armor",
+      "simple-weapons",
+      "longswords",
+      "rapiers",
+      "shortswords",
+      "hand-crossbows",
+      "thieves-tools"
+    ],
+    "choices": [
+      {
+        "kind": "skill",
+        "choose": 4,
+        "options": [
+          "acrobatics",
+          "athletics",
+          "deception",
+          "insight",
+          "intimidation",
+          "investigation",
+          "perception",
+          "performance",
+          "persuasion",
+          "sleight-of-hand",
+          "stealth"
+        ]
+      }
+    ]
+  },
+  "multiclassing": {
+    "requires_all": [
+      {
+        "ability": "dexterity",
+        "score": 13
+      }
+    ],
+    "grants": {
+      "proficiencies": [
+        "light-armor",
+        "thieves-tools"
+      ],
+      "choices": [
+        {
+          "kind": "skill",
+          "choose": 1,
+          "options": [
+            "acrobatics",
+            "athletics",
+            "deception",
+            "insight",
+            "intimidation",
+            "investigation",
+            "perception",
+            "performance",
+            "persuasion",
+            "sleight-of-hand",
+            "stealth"
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "infernal",
+  "name": "Infernal",
+  "source": "srd-5.1",
+  "kind": "exotic",
+  "script": "Infernal",
+  "typical_speakers": [
+    "Devils"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "id": "skill-versatility",
+  "name": "Skill Versatility",
+  "source": "srd-5.1",
+  "description": "You gain proficiency in two skills of your choice.",
+  "grants": {
+    "choices": [
+      {
+        "kind": "skill",
+        "choose": 2,
+        "options": [
+          "acrobatics",
+          "animal-handling",
+          "arcana",
+          "athletics",
+          "deception",
+          "history",
+          "insight",
+          "intimidation",
+          "investigation",
+          "medicine",
+          "nature",
+          "perception",
+          "performance",
+          "persuasion",
+          "religion",
+          "sleight-of-hand",
+          "stealth",
+          "survival"
+        ]
+      }
+    ]
+  }
+}

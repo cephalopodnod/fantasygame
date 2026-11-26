@@ -1,0 +1,6 @@
+{
+  "id": "artificers-lore",
+  "name": "Artificer's Lore",
+  "source": "srd-5.1",
+  "description": "Whenever you make an Intelligence (History) check related to magic items, alchemical objects, or technological devices, you can add twice your proficiency bonus, instead of any proficiency bonus you normally apply."
+}

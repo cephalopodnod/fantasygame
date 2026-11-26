@@ -42,6 +42,7 @@ uv run pytest                  # tests
 uv run ruff check              # lint
 uv run ruff format             # format
 uv run pyright                 # type check
+uv run python tools/srd_import.py   # re-import SRD 5.1 data into data/ (needs internet)
 build_exe.bat                  # Windows build -> build\win_amd64\fantasygame.exe
 ```
 

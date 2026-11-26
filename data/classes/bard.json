@@ -1,0 +1,118 @@
+{
+  "id": "bard",
+  "name": "Bard",
+  "source": "srd-5.1",
+  "hit_die": 8,
+  "saving_throws": [
+    "dexterity",
+    "charisma"
+  ],
+  "grants": {
+    "proficiencies": [
+      "light-armor",
+      "simple-weapons",
+      "longswords",
+      "rapiers",
+      "shortswords",
+      "hand-crossbows"
+    ],
+    "choices": [
+      {
+        "kind": "skill",
+        "choose": 3,
+        "options": [
+          "acrobatics",
+          "animal-handling",
+          "arcana",
+          "athletics",
+          "deception",
+          "history",
+          "insight",
+          "intimidation",
+          "investigation",
+          "medicine",
+          "nature",
+          "perception",
+          "performance",
+          "persuasion",
+          "religion",
+          "sleight-of-hand",
+          "stealth",
+          "survival"
+        ]
+      },
+      {
+        "kind": "proficiency",
+        "choose": 3,
+        "options": [
+          "bagpipes",
+          "drum",
+          "dulcimer",
+          "flute",
+          "lute",
+          "lyre",
+          "horn",
+          "pan-flute",
+          "shawm",
+          "viol"
+        ]
+      }
+    ]
+  },
+  "spellcasting_ability": "charisma",
+  "multiclassing": {
+    "requires_all": [
+      {
+        "ability": "charisma",
+        "score": 13
+      }
+    ],
+    "grants": {
+      "proficiencies": [
+        "light-armor"
+      ],
+      "choices": [
+        {
+          "kind": "skill",
+          "choose": 1,
+          "options": [
+            "acrobatics",
+            "animal-handling",
+            "arcana",
+            "athletics",
+            "deception",
+            "history",
+            "insight",
+            "intimidation",
+            "investigation",
+            "medicine",
+            "nature",
+            "perception",
+            "performance",
+            "persuasion",
+            "religion",
+            "sleight-of-hand",
+            "stealth",
+            "survival"
+          ]
+        },
+        {
+          "kind": "proficiency",
+          "choose": 1,
+          "options": [
+            "bagpipes",
+            "drum",
+            "dulcimer",
+            "flute",
+            "lute",
+            "lyre",
+            "horn",
+            "pan-flute",
+            "shawm",
+            "viol"
+          ]
+        }
+      ]
+    }
+  }
+}

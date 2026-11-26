@@ -1,0 +1,13 @@
+{
+  "id": "hill-dwarf",
+  "name": "Hill Dwarf",
+  "source": "srd-5.1",
+  "description": "As a hill dwarf, you have keen senses, deep intuition, and remarkable resilience.",
+  "race": "dwarf",
+  "ability_bonuses": {
+    "wisdom": 1
+  },
+  "traits": [
+    "dwarven-toughness"
+  ]
+}

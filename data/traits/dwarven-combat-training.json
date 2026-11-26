@@ -1,0 +1,14 @@
+{
+  "id": "dwarven-combat-training",
+  "name": "Dwarven Combat Training",
+  "source": "srd-5.1",
+  "description": "You have proficiency with the battleaxe, handaxe, light hammer, and warhammer.",
+  "grants": {
+    "proficiencies": [
+      "battleaxes",
+      "handaxes",
+      "light-hammers",
+      "warhammers"
+    ]
+  }
+}

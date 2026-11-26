@@ -1,6 +1,6 @@
 """Packaging config for Panda3D's build_apps. Run `build_exe.bat` rather than this file.
 
-Output: build/win_amd64/fantasygame.exe, with assets/ next to it. Copy the whole folder.
+Output: build/win_amd64/fantasygame.exe, with assets/ and data/ next to it. Copy the whole folder.
 """
 
 from setuptools import setup
@@ -10,7 +10,7 @@ setup(
     options={
         "build_apps": {
             "gui_apps": {"fantasygame": "src/fantasygame/__main__.py"},
-            "include_patterns": ["assets/**/*"],
+            "include_patterns": ["assets/**/*", "data/**/*"],
             "plugins": ["pandagl"],
             "platforms": ["win_amd64"],
             # Written by build_exe.bat from uv.lock, so the build uses the same versions.

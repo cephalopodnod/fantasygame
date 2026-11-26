@@ -1,0 +1,44 @@
+{
+  "id": "human",
+  "name": "Human",
+  "source": "srd-5.1",
+  "description": "Humans reach adulthood in their late teens and live less than a century.\n\nHumans tend toward no particular alignment. The best and the worst are found among them.\n\nHumans vary widely in height and build, from barely 5 feet to well over 6 feet tall. Regardless of your position in that range, your size is Medium.\n\nYou can speak, read, and write Common and one extra language of your choice. Humans typically learn the languages of other peoples they deal with, including obscure dialects. They are fond of sprinkling their speech with words borrowed from other tongues: Orc curses, Elvish musical expressions, Dwarvish military phrases, and so on.",
+  "size": "medium",
+  "speed": 30,
+  "ability_bonuses": {
+    "strength": 1,
+    "dexterity": 1,
+    "constitution": 1,
+    "intelligence": 1,
+    "wisdom": 1,
+    "charisma": 1
+  },
+  "grants": {
+    "languages": [
+      "common"
+    ],
+    "choices": [
+      {
+        "kind": "language",
+        "choose": 1,
+        "options": [
+          "dwarvish",
+          "elvish",
+          "giant",
+          "gnomish",
+          "goblin",
+          "halfling",
+          "orc",
+          "abyssal",
+          "celestial",
+          "draconic",
+          "deep-speech",
+          "infernal",
+          "primordial",
+          "sylvan",
+          "undercommon"
+        ]
+      }
+    ]
+  }
+}

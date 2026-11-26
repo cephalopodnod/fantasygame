@@ -2,13 +2,13 @@
 
 _Read this first when picking the project back up. Updated at the end of every working session._
 
-**Last updated:** 2026-10-21
+**Last updated:** 2026-11-24
 **Current phase:** Phase 1 — Rules engine ([PROJECT_PLAN.md §7](PROJECT_PLAN.md#7-phases))
 **Branch:** `master`
 
 ## Next step
 
-**Phase 1, piece 2 — data foundation:** `data/` folder, pydantic schemas, the `source` field and its test, and the SRD import tool.
+**Phase 1, piece 3 — abilities, proficiency, skills, checks and saves** (in `rules/`, using the dice service and the new data).
 
 Still open from Phase 0: run `build\win_amd64\fantasygame.exe` on the user's second PC (Phase 0's "done when"). Doesn't block Phase 1.
 
@@ -17,25 +17,27 @@ Still open from Phase 0: run `build\win_amd64\fantasygame.exe` on the user's sec
 | Piece | What | State |
 |---|---|---|
 | 1 | Dice service: expressions, advantage, fresh randomness, roll log, fixed dice for tests/replay | Done |
-| 2 | Data foundation: `data/`, schemas, `source` field, SRD import tool | **Next** |
-| 3 | Abilities, proficiency, skills, checks and saves | To do |
+| 2 | Data foundation: `data/`, schemas, `source` field, SRD import tool | Done |
+| 3 | Abilities, proficiency, skills, checks and saves | **Next** |
 | 4 | Features and effects system (plan choice #4) | To do |
 | 5 | Races, backgrounds, classes, character creation (point-buy, standard array, 4d6) | To do |
 | 6 | Levelling: rolled HP, hit dice, spell slots incl. pact magic and multiclass, rests, conditions | To do |
 | 7 | Skill-tree format + one sample tree | To do |
 | 8 | "Done when": level 1/5/10 characters of all 12 classes match the SRD | To do |
 
-## This session (2026-10-21)
+## This session (2026-11-24)
 
-- **Phase 0, pieces 3–4:** hex test scene (pointy-top hexes, BG3-style camera, KayKit Knight placeholder), `run_game.bat`, Windows build (`build_exe.bat`, ~76 MB folder, tested here without Python), GitHub Actions CI (checks on every push; `.exe` build by hand). All merged into `master`; CI green.
-- **Phase 1 decisions** (in [house-rules.md](house-rules.md)): HP on level-up is **rolled**; ability scores by **point-buy, standard array or 4d6 drop lowest**; **multiclassing** per the 2014 rules (code from Phase 1, UI later).
-- **Piece 1:** `rules/dice.py` — `Dice` with `roll("2d6+3")`, `"4d6kh3"`, and `d20(Advantage...)`; `SystemRandomSource` (OS randomness, nothing to save) and `FixedSequenceSource` (tests and replay). Every result keeps its raw faces and reason; listeners (later the session log) see every roll.
+- **Piece 2:** `content/schemas.py` (pydantic record types), `content/data.py` (loads `data/`, checks schemas, file names and references, reports all problems at once), `tools/srd_import.py` (2014 endpoints of the D&D 5e API → our format). 197 SRD records imported: abilities, skills, languages, proficiencies, racial traits, races, subraces, backgrounds, classes (core fields). Checked by hand against the SRD class and race tables. `data/` ships with the `.exe`.
+- **Decisions** (in [PROJECT_PLAN.md §8b](PROJECT_PLAN.md#8b-game-data)): our own data format, one record per file, `source` is `srd-5.1` or `original`, imported JSON is committed, SRD credit in `data/ATTRIBUTION.md`.
+
+**Previous session (2026-10-21):** Phase 0 finished (hex scene, Windows build, CI); Phase 1 piece 1 (dice service); HP rolled, point-buy/standard array/4d6, 2014 multiclassing.
 
 ## Open questions
 
-None of these block piece 2.
+None of these block piece 3.
 
 **Phase 1**
+- The SRD has only one background (Acolyte), one subclass per class and one feat. We'll need original backgrounds before character creation feels complete — how many, and which?
 - Rolled HP and 4d6 can be re-rolled by reloading a save (a side effect of unique dice). Accepted for now — revisit if it feels exploitable.
 
 **Earlier**

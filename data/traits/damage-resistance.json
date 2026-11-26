@@ -1,0 +1,6 @@
+{
+  "id": "damage-resistance",
+  "name": "Damage Resistance",
+  "source": "srd-5.1",
+  "description": "You have resistance to the damage type associated with your draconic ancestry."
+}

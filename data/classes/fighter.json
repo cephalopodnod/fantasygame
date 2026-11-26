@@ -1,0 +1,55 @@
+{
+  "id": "fighter",
+  "name": "Fighter",
+  "source": "srd-5.1",
+  "hit_die": 10,
+  "saving_throws": [
+    "strength",
+    "constitution"
+  ],
+  "grants": {
+    "proficiencies": [
+      "all-armor",
+      "shields",
+      "simple-weapons",
+      "martial-weapons"
+    ],
+    "choices": [
+      {
+        "kind": "skill",
+        "choose": 2,
+        "options": [
+          "acrobatics",
+          "animal-handling",
+          "athletics",
+          "history",
+          "insight",
+          "intimidation",
+          "perception",
+          "survival"
+        ]
+      }
+    ]
+  },
+  "multiclassing": {
+    "requires_any": [
+      {
+        "ability": "strength",
+        "score": 13
+      },
+      {
+        "ability": "dexterity",
+        "score": 13
+      }
+    ],
+    "grants": {
+      "proficiencies": [
+        "light-armor",
+        "medium-armor",
+        "shields",
+        "simple-weapons",
+        "martial-weapons"
+      ]
+    }
+  }
+}

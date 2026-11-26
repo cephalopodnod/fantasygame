@@ -1,0 +1,7 @@
+{
+  "id": "intelligence",
+  "name": "Intelligence",
+  "source": "srd-5.1",
+  "description": "Intelligence measures mental acuity, accuracy of recall, and the ability to reason.\n\nAn Intelligence check comes into play when you need to draw on logic, education, memory, or deductive reasoning. The Arcana, History, Investigation, Nature, and Religion skills reflect aptitude in certain kinds of Intelligence checks.",
+  "abbreviation": "INT"
+}

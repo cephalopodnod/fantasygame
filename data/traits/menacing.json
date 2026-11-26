@@ -1,0 +1,11 @@
+{
+  "id": "menacing",
+  "name": "Menacing",
+  "source": "srd-5.1",
+  "description": "You gain proficiency in the Intimidation skill.",
+  "grants": {
+    "skills": [
+      "intimidation"
+    ]
+  }
+}

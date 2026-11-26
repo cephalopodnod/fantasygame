@@ -1,0 +1,11 @@
+{
+  "id": "keen-senses",
+  "name": "Keen Senses",
+  "source": "srd-5.1",
+  "description": "You have proficiency in the Perception skill.",
+  "grants": {
+    "skills": [
+      "perception"
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "half-orc",
+  "name": "Half-Orc",
+  "source": "srd-5.1",
+  "description": "Half-orcs mature a little faster than humans, reaching adulthood around age 14. They age noticeably faster and rarely live longer than 75 years.\n\nHalf-orcs inherit a tendency toward chaos from their orc parents and are not strongly inclined toward good. Half-orcs raised among orcs and willing to live out their lives among them are usually evil.\n\nHalf-orcs are somewhat larger and bulkier than humans, and they range from 5 to well over 6 feet tall. Your size is Medium.\n\nYou can speak, read, and write Common and Orc. Orc is a harsh, grating language with hard consonants. It has no script of its own but is written in the Dwarvish script.",
+  "size": "medium",
+  "speed": 30,
+  "ability_bonuses": {
+    "strength": 2,
+    "constitution": 1
+  },
+  "traits": [
+    "darkvision",
+    "savage-attacks",
+    "relentless-endurance",
+    "menacing"
+  ],
+  "grants": {
+    "languages": [
+      "common",
+      "orc"
+    ]
+  }
+}

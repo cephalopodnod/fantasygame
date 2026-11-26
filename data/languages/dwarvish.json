@@ -1,0 +1,11 @@
+{
+  "id": "dwarvish",
+  "name": "Dwarvish",
+  "source": "srd-5.1",
+  "description": "Dwarvish is full of hard consonants and guttural sounds.",
+  "kind": "standard",
+  "script": "Dwarvish",
+  "typical_speakers": [
+    "Dwarves"
+  ]
+}

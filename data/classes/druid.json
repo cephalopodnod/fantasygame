@@ -1,0 +1,60 @@
+{
+  "id": "druid",
+  "name": "Druid",
+  "source": "srd-5.1",
+  "hit_die": 8,
+  "saving_throws": [
+    "intelligence",
+    "wisdom"
+  ],
+  "grants": {
+    "proficiencies": [
+      "light-armor",
+      "medium-armor",
+      "shields",
+      "clubs",
+      "daggers",
+      "javelins",
+      "maces",
+      "quarterstaffs",
+      "sickles",
+      "spears",
+      "darts",
+      "slings",
+      "scimitars",
+      "herbalism-kit"
+    ],
+    "choices": [
+      {
+        "kind": "skill",
+        "choose": 2,
+        "options": [
+          "arcana",
+          "animal-handling",
+          "insight",
+          "medicine",
+          "nature",
+          "perception",
+          "religion",
+          "survival"
+        ]
+      }
+    ]
+  },
+  "spellcasting_ability": "wisdom",
+  "multiclassing": {
+    "requires_all": [
+      {
+        "ability": "wisdom",
+        "score": 13
+      }
+    ],
+    "grants": {
+      "proficiencies": [
+        "light-armor",
+        "medium-armor",
+        "shields"
+      ]
+    }
+  }
+}

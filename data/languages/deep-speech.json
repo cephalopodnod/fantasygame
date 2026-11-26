@@ -1,0 +1,10 @@
+{
+  "id": "deep-speech",
+  "name": "Deep Speech",
+  "source": "srd-5.1",
+  "kind": "exotic",
+  "typical_speakers": [
+    "Aboleths",
+    "Cloakers"
+  ]
+}

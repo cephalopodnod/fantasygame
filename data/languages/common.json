@@ -1,0 +1,10 @@
+{
+  "id": "common",
+  "name": "Common",
+  "source": "srd-5.1",
+  "kind": "standard",
+  "script": "Common",
+  "typical_speakers": [
+    "Humans"
+  ]
+}

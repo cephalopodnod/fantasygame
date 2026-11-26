@@ -1,0 +1,7 @@
+{
+  "id": "draconic-ancestry-copper",
+  "name": "Draconic Ancestry (Copper)",
+  "source": "srd-5.1",
+  "description": "You have draconic ancestry. Choose one type of dragon from the Draconic Ancestry table. Your breath weapon and damage resistance are determined by the dragon type, as shown in the table.",
+  "parent": "draconic-ancestry"
+}

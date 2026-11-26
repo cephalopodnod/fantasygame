@@ -1,0 +1,14 @@
+{
+  "id": "rock-gnome",
+  "name": "Rock Gnome",
+  "source": "srd-5.1",
+  "description": "As a rock gnome, you have a natural inventiveness and hardiness beyond that of other gnomes.",
+  "race": "gnome",
+  "ability_bonuses": {
+    "constitution": 1
+  },
+  "traits": [
+    "artificers-lore",
+    "tinker"
+  ]
+}

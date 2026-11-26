@@ -1,0 +1,10 @@
+{
+  "id": "sylvan",
+  "name": "Sylvan",
+  "source": "srd-5.1",
+  "kind": "exotic",
+  "script": "Elvish",
+  "typical_speakers": [
+    "Fey creatures"
+  ]
+}
